@@ -134,10 +134,11 @@ jQuery(document).ready(function($){
         var email = $('#email').val();
         var object = $('#object').val();
 		var message = $('#message').val();
-        var ajaxurl = "amit.php",
+        var ajaxurl = "https://formspree.io/f/mrgdjwor"; //"amit.php";
         data =  {'email': email, 'name':name, 'object':object, 'message':message };
         $.post(ajaxurl, data, function(result){
         		$('#cava').text(result);
+				console.log('RESULT= '+result);
    		 });
 		
 		//assuming that the send was successful...clear the input area
