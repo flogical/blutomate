@@ -136,10 +136,34 @@ jQuery(document).ready(function($){
 		var message = $('#message').val();
         var ajaxurl = "https://formspree.io/f/mrgdjwor"; //"amit.php";
         data =  {'email': email, 'name':name, 'object':object, 'message':message };
-        $.post(ajaxurl, data, function(result){
-        		$('#cava').text(result);
+        //$.post(ajaxurl, data, function(result){
+        //		$('#cava').text(result);
+		//		console.log('RESULT= '+result);
+   		// }); 
+		//the above works well...except some CORS issue--tried to solve below
+
+		
+		$.ajax({
+			type: "POST",
+			url: ajaxurl,
+			data: data,
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(result){
+				$('#cava').text(result);
 				console.log('RESULT= '+result);
-   		 });
+			},
+			error: function (xhr, status) {
+				// handle errors
+				console.log('ERROR= '+status + " ;;"+ xhr);
+			},
+			//headers: {  //doesnt work when this is not commented out
+			//	"accept": "application/json",
+			//	"Access-Control-Allow-Origin":"*"
+			//}
+			//dataType: 'json',
+		  });
 		
 		//assuming that the send was successful...clear the input area
 		name.value="";
