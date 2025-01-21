@@ -4,12 +4,13 @@
 *{
 	box-sizing: border-box;
 	font-weight: normal;
+	font-size: 100%;
 }
 
 html,body{
 
 	background-color: #f2f2f2;
-	width:100vp;
+	width:100vw;
 	height:100vh;
 	margin: 0;
 	padding: 0;
@@ -23,10 +24,10 @@ h1{
 	font-size: 36px;
 	letter-spacing: 0.2em;
 	color: #1a1a1a;
-
 }
+
 h2{
-	margin-bottom:30px;
+	margin-bottom: 30px;
 }
 
 section{
@@ -73,8 +74,7 @@ p, .title-services{
 
 }
 
-
-.home{
+.home {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -93,12 +93,10 @@ p, .title-services{
 	-webkit-transition: -webkit-transform 1s ease-in-out;
 	        transition: transform 1s ease-in-out;
 
-	
 }
 
 .nav-is-visible .home {
 	border:40px solid #fff;
-
 
 	-webkit-transform-origin: bottom bottom;
     -ms-transform-origin: bottom bottom;
@@ -109,7 +107,6 @@ p, .title-services{
 	-webkit-transition: border 1s ease-in-out, -webkit-transform 1s 1s ease-in-out;
 	       transition: 	border 1s ease-in-out, transform 1s 1s ease-in-out;	
 }
-
 
 #logo-container{
 	position: absolute;
@@ -134,7 +131,6 @@ p, .title-services{
 }
 
 #logo{
-
 	width:130px;
 	height: 80px;
 	margin: 25px auto 25px auto;
@@ -237,11 +233,10 @@ main.nav-is-visible{
 }
 
 
-
 #about{
  /*background: blue;  */
- width: 1000px;
- height:900px;
+	width: 1000px;
+	height:900px;
 }
 
 
@@ -264,12 +259,9 @@ main.nav-is-visible{
 	letter-spacing: 0.2em;
 	color: #1a1a1a;
 	
- }
-
-
+}
 
 .first-box, .second-box, .third-box{
-	
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -286,13 +278,13 @@ main.nav-is-visible{
 }
 
 .first-box figure, .second-box figure, .third-box figure{
-
  	width: 1000px;
 	height: 180px;
  	margin: 0px;
 	display: block;
 	position: absolute;
- }
+}
+
 .first-box .front, .second-box .bottom, .third-box .back{
 	background-image: url("../img/photo01.jpg");
 }
@@ -320,6 +312,7 @@ main.nav-is-visible{
 	        transform: rotateY(0deg) translateZ(90px) ; 
 
 }
+
 .back {
 	-webkit-transform-origin: center center;
     -ms-transform-origin: center center;
@@ -328,6 +321,7 @@ main.nav-is-visible{
 	        transform:  rotateX(180deg) translateZ(90px); 
 
 }
+
 .bottom {
 	-webkit-transform-origin: center center;
     -ms-transform-origin: center center;
@@ -336,6 +330,7 @@ main.nav-is-visible{
 	        transform:  rotateX(-90deg) translateZ(90px); 
 }
 
+/* no anim needed?
 .anim .first-box{
 	-webkit-transform:  rotateX(45deg) translateY( 0px );
         transform:  rotateX(45deg) translateY( 0px );
@@ -361,7 +356,8 @@ main.nav-is-visible{
 	-webkit-transform-origin: center center;
 	    -ms-transform-origin: center center;
 	        transform-origin: center center;
-}
+}*/
+
 
 .launchRot01 .second-box, .launchRot02 .third-box, .launchRot02 .first-box{
 	-webkit-transform:  rotateX(90deg) translateY( -90px );
@@ -374,19 +370,9 @@ main.nav-is-visible{
 
 }
 
-.launchRot01 .second-box, .launchRot02 .third-box, .launchRot02 .first-box{
-	-webkit-transform:  rotateX(90deg) translateY( -90px );
-        transform:  rotateX(90deg) translateY( -90px );
-	-webkit-transition: -webkit-transform 1s;
-	        transition: transform 1s;
-	-webkit-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	        transform-origin: center center;  
-
-}
 .launchRot01 .third-box, .launchRot03 .second-box, .launchRot03 .first-box{
-	-webkit-transform:  rotateX(179deg) translateZ( 90px );
-        transform:  rotateX(179deg) translateZ( 90px );
+	-webkit-transform: rotateX(179deg) translateZ( 90px );
+        transform: rotateX(179deg) translateZ( 90px ); /* translateX(-10%) rotateX(179deg) translateZ( 90px );*/
 	-webkit-transition: -webkit-transform 1s;
 	        transition: transform 1s;
 	-webkit-transform-origin: center center;
@@ -402,7 +388,6 @@ main.nav-is-visible{
 	margin-top:-100px;
 	width: 1000px;
 	height: 150px;
-
 }
 
 .line-container{
@@ -456,7 +441,7 @@ main.nav-is-visible{
 .name-about{
 	font-family: 'Libre Baskerville', serif;
 	font-style: italic;
-	font-size: 	36px;
+	font-size: 2.25em;	/*36px; */
 	opacity: 0;
 	color: #fff;
 	-webkit-transform:translateY( 0px );
@@ -464,9 +449,8 @@ main.nav-is-visible{
 		        transform:translateY( 0px );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
 	        transition: opacity 0.25s, transform 0.25s;
-
-	
 }
+
 .title{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
@@ -486,9 +470,8 @@ main.nav-is-visible{
         transform:translateY( -10px );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
 	        transition: opacity 0.25s, transform 0.5s;
-
-	
 }
+
 .goLine .title{
 	opacity: 1;
 	-webkit-transform:translateY( 10px );
@@ -496,19 +479,15 @@ main.nav-is-visible{
 	        transform:translateY( 10px );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
 	        transition: opacity 0.25s, transform 0.5s;
-
-	
 }
 
-
-#service{
+#services{
     height:460px;
     width: 900px;
     text-align: center;
-   
 }
 
-#service div{
+#services div{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	font-size: 14px;
@@ -517,7 +496,7 @@ main.nav-is-visible{
 	color: #1a1a1a;
 }
 
-#service span{
+#services span{
 	display: inline-block;
 	margin-bottom: 25px;
 	height: 65px;
@@ -537,6 +516,7 @@ main.nav-is-visible{
 	
 	float: left;
 }
+
 #third{
 	width: 300px;
 	height: 100px;
@@ -546,9 +526,11 @@ main.nav-is-visible{
 #first span{
 	background: url("../design.svg") no-repeat center;
 }
+
 #second span{
 	background: url("../dev.svg") no-repeat center;
 }
+
 #third span{
 	background: url("../pm.svg") no-repeat center;
 }
@@ -557,6 +539,7 @@ main.nav-is-visible{
 	width: 100%;
     height:567px;
 }
+
 #form {
 	width: 860px;
 	margin:auto;	
@@ -586,14 +569,17 @@ input:focus, textarea:focus{
 	width: 380px;
 	height: 40px;
 }
+
 #email {
 	margin-left: 50px;
 }
+
 #message{
 	resize:none;
 	width: 860px;
 	height: 200px;
 }
+
 #submit {
     background-color: transparent;
     margin-top: 12px;
@@ -608,7 +594,6 @@ input:focus, textarea:focus{
 
 a{
 	text-decoration: none;
-
 }
 
 #btn{
@@ -681,9 +666,8 @@ a{
 	width: 255px;
 	height: 93px;
 	text-align: center;
-	
-	
 }
+
 #adress{
 	margin-top: 25px;
 	display:inline-block;
@@ -717,30 +701,3 @@ a{
 	display: none;
 }
 
-
-/*********************************************************************
-**********************************************************************
-**********************************************************************
-**********************************************************************
-******************* VERSION  1023 a 768 / TABLETTE *******************
-**********************************************************************
-**********************************************************************
-**********************************************************************
-*********************************************************************/
-@media screen and (max-width:989px) {
-
-}
-
-
-/*********************************************************************
-**********************************************************************
-**********************************************************************
-**********************************************************************
-************************* VERSION SMARTPHONE *************************
-**********************************************************************
-**********************************************************************
-**********************************************************************
-*********************************************************************/
-@media screen and (max-width:767px) {
-	
-}

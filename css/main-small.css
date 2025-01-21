@@ -1,0 +1,445 @@
+/*********************************************************************
+**********************************************************************
+**********************************************************************
+**********************************************************************
+********* SMALLEST screen and (max-width: 399px)**********************
+**********************************************************************
+**********************************************************************
+**********************************************************************
+*********************************************************************/
+
+/*
+*{
+	box-sizing: border-box;
+	font-weight: normal;
+	font-size: 100%;
+}
+
+html,body{
+	background-color: #f2f2f2;
+	width:100vw;
+	height:100vh;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}*/
+
+h1{
+	text-align: center;
+	margin-bottom: 10%;
+	font-family: 'Passion One', cursive;
+	font-size: 2.25rem;
+	letter-spacing: 0.2em;
+	color: #1a1a1a;
+}
+
+h2{
+	margin-bottom: 2%; /*30px; */
+}
+
+section{
+	width: 100vw;
+	margin: 0;
+}
+
+
+/* Scroll down - App content*/
+main.nav-is-visible{
+	position: absolute;
+	top: 0.5em;
+	-webkit-transition: top 1s 1s ease-in-out;
+
+        transition: top 1s 1s ease-in-out;
+}
+
+#about{
+    /*background: blue;  */
+    width: 90vw;
+    margin:auto;
+    /*height:100vh; umm removal wont affect photos? nope better for scroll even but leaves huge empty space below?*/
+    /* height:calc(1vh + 900px);  meh 
+    */
+}
+
+/*#team{
+    width: 100vw;
+    /*height:100vh; umm removal wont affect photos? nope better for scroll even but leaves huge empty space below?
+    margin:auto;
+}*/
+
+#photo-container{
+	margin: 11% auto 0 auto;
+	width: 100vw;
+    /*height:max(600px, calc(75vh / 3))auto; auto seems to work but no margin :(...have to be set or uses main.css* 
+	/*height: 75vh; 75% prolly cant use % as no height in parent? ... 600px;
+    */
+}
+
+.photo{
+    width: 100%;
+    height:180px;/*seems better to keep as 180px as it's 540px/3... calc(80vh / 3); calc(100% / 3);25% ;180px; max(180px, calc(75vh / 3))*/
+    margin-bottom: 0.325rem; 
+    position: relative;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    /*-webkit-perspective-origin: 50% 50%;
+    perspective-origin: 50% 50%; need even perspective? smdh*/
+    text-align: center;
+    font-family: 'Passion One', cursive;
+    font-size: 36px;
+    letter-spacing: 0.2em;
+    color: #1a1a1a;
+}
+
+.first-box, .second-box, .third-box{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	-webkit-transform: translateZ( -5.625rem );
+	transform: translateZ(  -5.625rem );
+    /*transform: rotateY(90deg) translateX(100%) rotateY(-90deg);*/
+	-webkit-transform-style: preserve-3d;
+
+        transform-style: preserve-3d;
+	-webkit-transition: -webkit-transform 1s;
+	        transition: transform 1s;
+	-webkit-transform-origin: center center;
+	    -ms-transform-origin: center center;
+	        transform-origin: center center;
+}
+
+
+.first-box figure, .second-box figure, .third-box figure{
+    /*width: 90vw;
+    height: 100%;  180px;  calc(100% / 3); max(180px, calc(75vh / 3))  */
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    display: block;
+    position: absolute;
+    background-position: -110% 0% ;background-size: auto;
+    /*object-fit: cover;
+    object-position: center center;
+    object-position: -50% 0%; -90% 0%*/
+}
+
+/* figure{ overrides above...hopefully no conflict with main smh >>does get overriden by main smh 
+    width: 90vw;
+    height: 100%;
+    object-fit: none;
+    object-position: -100% 0%;
+    display: block;
+    position: absolute;
+}*/
+
+/*
+figure {  //other attempt using !important works but whole div moves smh 
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0px !important;
+    display: block !important;
+    position: absolute !important;
+    top: 50%;
+    left: 50%; use these?!? add scale(1.1, 0.5); ? or use background-position ?
+    transform: translate(-50% -50%) !important;
+}*/
+
+/*.first-box .front, .second-box .bottom, .third-box .back{
+    background-image: url("../img/photo01.jpg"); 
+    /*background-position: -100% 0% !important; /* -100% 0% >> much better but override below messes things up coliis--moving above...
+    right: 50%;
+    transform: translate(-50%) !important; much better? seems to still move whole div smdh
+    background-attachment:fixed;
+    background-position: bottom 10px right 20px;
+         >>> position the background image 10 pixels above the bottom edge and 20 pixels to the left of the right edge of the container.
+    */
+
+    /*background-position: left center;
+    background-attachment: fixed; what makes the background image rescale based on the container’s size */
+    /*background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+	background:#1a1a1a url("../img/photo01.jpg") no-repeat center fixed;
+    background-size: contain;
+    object-fit: cover;
+    transform: translateX(-10%);
+    background-position: -100% 0%; not bad
+    background-size: cover; 
+}*/
+
+/*
+.first-box .bottom, .second-box .front, .third-box .bottom{
+    background-image: url("../img/photo02.jpg");
+}
+
+.first-box .back, .second-box .back, .third-box .front{
+    background-image: url("../img/photo03.jpg");
+}*/
+
+.second-box figure{	
+	/*background-position: -100% -100% ;  percent better; !important  */
+    background-position-y: -100%;
+}
+
+.third-box figure{	
+	/*background-position: -100% -200% ; 2.5em; -360px !important*/
+    background-position-y: -200%;
+}
+
+.front {
+	-webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+        transform-origin: center center;
+	-webkit-transform: rotateY(0deg) translateZ(5.625rem) ; /* 2.5em ; calc(0vh - 100%)  */
+	        transform: rotateY(0deg) translateZ(5.625rem) ; /* calc(-0vh - 200%) */
+
+}
+
+.back {
+	-webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+        transform-origin: center center;
+	-webkit-transform: rotateX(180deg) translateZ(5.625rem);
+	        transform: rotateX(180deg) translateZ(5.625rem); 
+
+}
+
+.bottom {
+	-webkit-transform-origin: center center;
+    -ms-transform-origin: center center;
+        transform-origin: center center;
+	-webkit-transform: rotateX(-90deg) translateZ(5.625rem);
+	        transform: rotateX(-90deg) translateZ(5.625rem); 
+}
+
+
+.launchRot01 .second-box, .launchRot02 .third-box, .launchRot02 .first-box{
+	-webkit-transform:  rotateX(90deg) translateY( -5.625rem );
+        transform:  rotateX(90deg) translateY( -5.625rem );
+	-webkit-transition: -webkit-transform 1s;
+	        transition: transform 1s;
+	-webkit-transform-origin: center center;
+	    -ms-transform-origin: center center;
+	        transform-origin: center center;  
+
+}
+
+.launchRot01 .third-box, .launchRot03 .second-box, .launchRot03 .first-box{
+	-webkit-transform:  rotateX(179deg) translateZ( 5.625rem );
+        transform:  rotateX(179deg) translateZ( 5.625rem );
+	-webkit-transition: -webkit-transform 1s;
+	        transition: transform 1s;
+	-webkit-transform-origin: center center;
+	    -ms-transform-origin: center center;
+	        transform-origin: center center;  
+
+}
+
+#name-container, #name-container02, #name-container03{
+	position: absolute;
+	pointer-events: none;
+	margin: auto;
+	margin-top: -10%; /*calc(-100% - 100px); */
+	width: 90vw; /* better with vw */
+	height: 10%; /* 150px*/
+}
+
+.line-container{
+	margin-bottom: 0.937em; /* em better? -- 1.5%; */
+}
+
+.lineL, .goLine .lineL{
+	-webkit-transform-origin: right top;
+    -ms-transform-origin: right top;
+        transform-origin: right top;  
+}
+
+.lineR, .goLine .lineR{
+	right: 0;
+	-webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+        transform-origin: left top;	
+}
+
+.lineL, .lineR{
+	position: absolute;
+	/*height: 1px;
+	width:200px;*/
+    height: 0.0625em; 
+    width: 12.5em; /*calc(0vw + 200px); try calc with % */
+	background-color: #fff;
+	opacity: 0;
+	-webkit-transition: height 0.25s, width 0.5s 0.25s, opacity 0.25s 0.25s,-webkit-transform 0.5s 0.25s;
+        transition: height 0.25s, width 0.5s 0.25s, opacity 0.25s 0.25s,transform 0.5s 0.25s;
+	-webkit-transform:scale(1,1);
+	    -ms-transform:scale(1,1);
+	        transform:scale(1,1);
+}
+
+.goLine .lineL, .goLine .lineR{
+	-webkit-transform:scale(0.15,1);
+    -ms-transform:scale(0.15,1);
+        transform:scale(0.15,1);
+	opacity: 1;
+
+	/*width: 550px;
+	height:10px;*/ 
+    height:0.625rem;
+    width: 31.25em; /*calc(0vw + 500px); */
+	-webkit-transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, -webkit-transform 0.5s 0.25s;
+	        transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, transform 0.5s 0.25s;
+}
+
+.name-about, .title{
+	text-align: center;
+	display: block;
+}
+
+
+.name-about{
+	font-family: 'Libre Baskerville', serif;
+	font-style: italic;
+	font-size: 2.25em;	/*36px; */
+	opacity: 0;
+	color: #fff;
+	-webkit-transform:translateY( 0px );
+		    -ms-transform:translateY( 0px );
+		        transform:translateY( 0px );
+	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
+	        transition: opacity 0.25s, transform 0.25s;
+}
+
+.title{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.2em;
+	opacity: 0;
+	-webkit-transform:translateY( 0px );
+    -ms-transform:translateY( 0px );
+        transform:translateY( 0px );
+	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
+	        transition: opacity 0.25s, transform 0.25s;
+
+}
+
+.goLine .name-about{
+	opacity: 1;
+	-webkit-transform:translateY( -10px ); /* use em*/
+    -ms-transform:translateY( -10px );
+        transform:translateY( -10px );
+	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
+	        transition: opacity 0.25s, transform 0.5s;
+}
+
+.goLine .title{
+	opacity: 1;
+	-webkit-transform:translateY( 10px ); /* use em*/
+	    -ms-transform:translateY( 10px );
+	        transform:translateY( 10px );
+	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
+	        transition: opacity 0.25s, transform 0.5s;
+}
+
+#services{ /*make in two columns */
+    height: 70vh;  /*460px; seems needed */
+    width: 100vw;
+    margin:auto;
+}
+
+
+#services div{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 1.6em;
+	letter-spacing: 1px;
+	color: #1a1a1a;
+}
+
+#services span{
+	display: inline-block;
+	margin-bottom: 1.26rem; /* 25px; */
+	height: 4.06rem; /* 65px; */
+	width: 100%;
+}
+
+#first{
+	width: 18.75rem; /* or 33.3%?  300px; */
+	height: auto;	/* 100px;*/
+		
+	float: left;
+}
+
+#second{
+	width: 18.75rem; /* or 33.3%?  300px; */
+	height: auto;	/* 100px;*/
+	
+	float: left;
+}
+
+#third{
+	width: 18.75rem; /* or 33.3%?  300px; */
+	height: auto;	/* 100px;*/
+	float: left;
+}
+
+/* gotta override below and put in two cols*/
+.title-services{
+	text-align: center;
+	line-height: 1.6em;
+	font-family: 'Libre Baskerville', serif;
+	font-style: italic;	
+	font-size: 16px;
+	color: #1a1a1a;
+}
+
+#contact{
+	width: 100vw;
+    height:70vh; /* toSee */
+    margin:auto;	
+}
+
+#form {
+	width: 100%;
+	margin:auto;	
+}
+
+#message{
+    width: 90vw; /*860px; */
+	height: auto;/*200px; */
+}
+
+#map-container{
+	position: relative;
+	margin-top: 105px;
+}
+
+#adress-container{
+	position: absolute;
+	left: 50%;
+	margin-left:-127px;
+	top: -25px;
+	z-index: 1000;
+	background-color: #16161f;
+	width: 255px;
+	height: 93px;
+	text-align: center;	
+}
+
+#adress{
+	margin-top: 25px;
+	display:inline-block;
+	line-height: normal;
+	vertical-align: middle;
+	color: #f2f2f2;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+}
+
+#map {
+	margin-top: 80px;
+	height:auto; /*400px; */
+	width:100vw;
+}

@@ -398,7 +398,7 @@ main.nav-is-visible{
 .goLine #title{
 	opacity: 1;
 	transform:translateY( 10px );
-	transition: opacity 0.25s, transform 0.5s=;
+	transition: opacity 0.25s, transform 0.5s;
 	
 }
 
