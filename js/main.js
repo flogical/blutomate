@@ -3,7 +3,7 @@ jQuery.fn.redraw = function() {
 };
 
 jQuery(document).ready(function($){
-
+	
 	jQuery('body').redraw();
 	
 	var introVisible = true;
@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
 			function(e) {
 				window.onscroll = function () { window.scrollTo(0, 0); };
 			});
-			$('#logo-container').transition({opacity: 1, scale: 1, delay:1000},500)
+			$('#logo-container').transition({opacity: 1, scale: 1, delay:100},500)
 
 		}
 	});
@@ -71,7 +71,6 @@ jQuery(document).ready(function($){
 	});
 
 	
-	
 
 	$('.first-box').on('mouseover mouseout', function(){
 		toggle3dBlock01(!$('.photo').hasClass('launchRot01'));
@@ -80,7 +79,8 @@ jQuery(document).ready(function($){
 
 	function toggle3dBlock01(addOrRemove) {
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
-		$('.photo').toggleClass('launchRot01', addOrRemove);		
+		$('.second-box .front').toggleClass('doHide', addOrRemove);	//serieux
+		$('.photo').toggleClass('launchRot01', addOrRemove);
 	}
 	function launchLine(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
@@ -97,11 +97,18 @@ jQuery(document).ready(function($){
 
 	function toggle3dBlock02(addOrRemove) {
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
+		$('.second-box .front').removeClass('doHide');  //toggleClass('doHide', !addOrRemove);
+		$('.third-box .bottom').toggleClass('doHide', !addOrRemove); //toSee with flip of flag
+
 		$('.photo').toggleClass('launchRot02', addOrRemove);
+
+		$('.first-box .front').toggleClass('doHide', addOrRemove);
+		$('.third-box .front').toggleClass('doHide', addOrRemove);
+		$('.third-box .back').toggleClass('doHide', addOrRemove);
 	}
 	function launchLine02(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
-		console.log('launchLine= '+addOrRemoveLine);
+		//console.log('launchLine= '+addOrRemoveLine);
 		$('#name-container02').toggleClass('goLine', addOrRemoveLine);
 
 	}
@@ -116,6 +123,9 @@ jQuery(document).ready(function($){
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
 		$('.photo').toggleClass('launchRot03', addOrRemove);
 
+		$('.first-box .bottom').toggleClass('doHide', addOrRemove);
+		$('.second-box .bottom').toggleClass('doHide', addOrRemove);
+
 	}
 
 	function launchLine03(addOrRemoveLine) {
@@ -126,6 +136,7 @@ jQuery(document).ready(function($){
 
 	$(document).on('scroll',function(){
 		if($(this).scrollTop()>= $('#photo-container').position().top){
+			//console.log('scrolled past photo-container?');
 		}
 	})
 

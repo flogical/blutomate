@@ -14,7 +14,7 @@
       -->
 
       <link rel="stylesheet" rel="stylesheet" type="text/css" 
-      media="screen and (min-width: 400px) and (max-width: 767px)" href="css/main-mid.css" />
+      media="screen and (min-width: 400px) and (max-width: 767px)" href="css/main-mid-empty.css" />
 
       <link rel="stylesheet" rel="stylesheet" type="text/css" 
       media="screen and (max-width: 399px)" href="css/main-small.css" />
@@ -26,8 +26,8 @@
       <!--<script src="js/lib/jquery.waypoints.min.js"></script> -->
       
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
-      <!--<script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script> -->
-      <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w"></script> diable for now-->
+      <script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w"></script>
 
     </head>
 
@@ -71,7 +71,7 @@
               <div class="photo">
                 <div class="third-box">
                   <figure class="front"></figure>
-                  <figure class="bottom"></figure>
+                  <figure class="bottom doHide"></figure>
                   <figure class="back"></figure>
                 </div>
               </div>
@@ -170,7 +170,7 @@
     </body>
   <script> 
     //google.maps.event.addDomListener(window, 'load', init); //deprecated?
-    //document.addEventListener('DOMContentLoaded',init); //disable for local testing--toRead**
+    document.addEventListener('DOMContentLoaded',init);
     var map;
     function init() {
         var mapOptions = {

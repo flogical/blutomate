@@ -25,12 +25,7 @@ html,body{
 }*/
 
 h1{
-	text-align: center;
-	margin-bottom: 10%;
-	font-family: 'Passion One', cursive;
-	font-size: 2.25rem;
-	letter-spacing: 0.2em;
-	color: #1a1a1a;
+	margin-bottom: 0 ;
 }
 
 h2{
@@ -56,6 +51,7 @@ main.nav-is-visible{
     /*background: blue;  */
     width: 90vw;
     margin:auto;
+    height:auto;
     /*height:100vh; umm removal wont affect photos? nope better for scroll even but leaves huge empty space below?*/
     /* height:calc(1vh + 900px);  meh 
     */
@@ -70,6 +66,7 @@ main.nav-is-visible{
 #photo-container{
 	margin: 11% auto 0 auto;
 	width: 100vw;
+    height:auto; 
     /*height:max(600px, calc(75vh / 3))auto; auto seems to work but no margin :(...have to be set or uses main.css* 
 	/*height: 75vh; 75% prolly cant use % as no height in parent? ... 600px;
     */
@@ -77,13 +74,13 @@ main.nav-is-visible{
 
 .photo{
     width: 100%;
-    height:180px;/*seems better to keep as 180px as it's 540px/3... calc(80vh / 3); calc(100% / 3);25% ;180px; max(180px, calc(75vh / 3))*/
+    height:90px;/*seems better to keep as 180px as it's 540px/3... calc(80vh / 3); calc(100% / 3);25% ;180px; max(180px, calc(75vh / 3))*/
     margin-bottom: 0.325rem; 
     position: relative;
     -webkit-perspective: 1000px;
     perspective: 1000px;
     /*-webkit-perspective-origin: 50% 50%;
-    perspective-origin: 50% 50%; need even perspective? smdh*/
+    perspective-origin: 50% 50%; need even perspective? smdh DEF dont even need the below esti*/
     text-align: center;
     font-family: 'Passion One', cursive;
     font-size: 36px;
@@ -117,7 +114,8 @@ main.nav-is-visible{
     margin: 0px;
     display: block;
     position: absolute;
-    background-position: -110% 0% ;background-size: auto;
+    background-position: center 0% ;
+    background-size: auto;
     /*object-fit: cover;
     object-position: center center;
     object-position: -50% 0%; -90% 0%*/
@@ -169,14 +167,20 @@ figure {  //other attempt using !important works but whole div moves smh
     background-size: cover; 
 }*/
 
-/*
+/* using url("../img/resized/photo01.jpg") but gotta change height = 270/3 
+using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh + photo03 just slightly decal
+*/
+.first-box .front, .second-box .bottom, .third-box .back{
+    background-image: url("../img/resized/photo01.jpg"); 
+}
+
 .first-box .bottom, .second-box .front, .third-box .bottom{
-    background-image: url("../img/photo02.jpg");
+    background-image: url("../img/resized/photo02.jpg");
 }
 
 .first-box .back, .second-box .back, .third-box .front{
-    background-image: url("../img/photo03.jpg");
-}*/
+    background-image: url("../img/resized/photo03.jpg");
+}
 
 .second-box figure{	
 	/*background-position: -100% -100% ;  percent better; !important  */
@@ -188,17 +192,21 @@ figure {  //other attempt using !important works but whole div moves smh
     background-position-y: -200%;
 }
 
+.photo .doHide{
+    display: none; /* just to hide those perspective imgs smh*/
+}
+
 .front {
-	-webkit-transform-origin: center center;
+	-webkit-transform-origin: center center; /* center center */
     -ms-transform-origin: center center;
         transform-origin: center center;
-	-webkit-transform: rotateY(0deg) translateZ(5.625rem) ; /* 2.5em ; calc(0vh - 100%)  */
-	        transform: rotateY(0deg) translateZ(5.625rem) ; /* calc(-0vh - 200%) */
+	-webkit-transform: rotateY(0deg) translateZ(5.625rem) ; 
+	        transform: rotateY(0deg) translateZ(5.625rem) ; 
 
 }
 
 .back {
-	-webkit-transform-origin: center center;
+	-webkit-transform-origin: center center; /*center center */
     -ms-transform-origin: center center;
         transform-origin: center center;
 	-webkit-transform: rotateX(180deg) translateZ(5.625rem);
@@ -207,7 +215,7 @@ figure {  //other attempt using !important works but whole div moves smh
 }
 
 .bottom {
-	-webkit-transform-origin: center center;
+	-webkit-transform-origin: center center ; /*center center  */
     -ms-transform-origin: center center;
         transform-origin: center center;
 	-webkit-transform: rotateX(-90deg) translateZ(5.625rem);
@@ -237,19 +245,21 @@ figure {  //other attempt using !important works but whole div moves smh
 
 }
 
+
 #name-container, #name-container02, #name-container03{
 	position: absolute;
 	pointer-events: none;
 	margin: auto;
 	margin-top: -10%; /*calc(-100% - 100px); */
-	width: 90vw; /* better with vw */
-	height: 10%; /* 150px*/
+	width: 100vw; /* better with vw */
+	height: fit-content; /* 10%;  150px*/
 }
 
 .line-container{
-	margin-bottom: 0.937em; /* em better? -- 1.5%; */
+	margin-bottom: 0; /* 15px-- 1.5%;  0.937em*/
 }
 
+/*
 .lineL, .goLine .lineL{
 	-webkit-transform-origin: right top;
     -ms-transform-origin: right top;
@@ -261,7 +271,7 @@ figure {  //other attempt using !important works but whole div moves smh
 	-webkit-transform-origin: left top;
     -ms-transform-origin: left top;
         transform-origin: left top;	
-}
+}*/
 
 .lineL, .lineR{
 	position: absolute;
@@ -292,16 +302,17 @@ figure {  //other attempt using !important works but whole div moves smh
 	        transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, transform 0.5s 0.25s;
 }
 
+/*
 .name-about, .title{
 	text-align: center;
 	display: block;
-}
+}*/
 
-
+/*
 .name-about{
 	font-family: 'Libre Baskerville', serif;
 	font-style: italic;
-	font-size: 2.25em;	/*36px; */
+	font-size: 2.25em;	/*36px; 
 	opacity: 0;
 	color: #fff;
 	-webkit-transform:translateY( 0px );
@@ -310,13 +321,14 @@ figure {  //other attempt using !important works but whole div moves smh
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
 	        transition: opacity 0.25s, transform 0.25s;
 }
+*/
 
 .title{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.2em;
 	opacity: 0;
-	-webkit-transform:translateY( 0px );
-    -ms-transform:translateY( 0px );
+	-webkit-transform:translateY( 0 );
+    -ms-transform:translateY( 0 );
         transform:translateY( 0px );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
 	        transition: opacity 0.25s, transform 0.25s;
@@ -325,37 +337,38 @@ figure {  //other attempt using !important works but whole div moves smh
 
 .goLine .name-about{
 	opacity: 1;
-	-webkit-transform:translateY( -10px ); /* use em*/
-    -ms-transform:translateY( -10px );
-        transform:translateY( -10px );
+	-webkit-transform:translateY( -0.625rem ); /* use em  -10px */
+    -ms-transform:translateY( -0.625rem);
+        transform:translateY( -0.625rem );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
 	        transition: opacity 0.25s, transform 0.5s;
 }
 
 .goLine .title{
 	opacity: 1;
-	-webkit-transform:translateY( 10px ); /* use em*/
-	    -ms-transform:translateY( 10px );
-	        transform:translateY( 10px );
+	-webkit-transform:translateY( 0 ); /* use em 10px*/
+	    -ms-transform:translateY( 0 );
+	        transform:translateY( 0.625rem );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
 	        transition: opacity 0.25s, transform 0.5s;
 }
 
 #services{ /*make in two columns */
     height: 70vh;  /*460px; seems needed */
-    width: 100vw;
-    margin:auto;
+    width: 90vw;
+    margin: auto;
+    margin-top: 5.625em;
 }
 
-
+/*
 #services div{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	font-size: 14px;
+	font-size: 14px; 
 	line-height: 1.6em;
 	letter-spacing: 1px;
 	color: #1a1a1a;
-}
+}*/
 
 #services span{
 	display: inline-block;
@@ -396,8 +409,9 @@ figure {  //other attempt using !important works but whole div moves smh
 
 #contact{
 	width: 100vw;
-    height:70vh; /* toSee */
-    margin:auto;	
+    height: auto; /*  70vh*/
+    margin:auto;
+    margin-top: 5.625em;
 }
 
 #form {

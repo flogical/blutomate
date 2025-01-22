@@ -1,0 +1,168 @@
+/*********************************************************************
+**********************************************************************
+**********************************************************************
+**********************************************************************
+******************* VERSION  1023 a 768 / TABLETTE *******************
+******************(min-width: 768px) and (max-width:1023px)***********
+**********************************************************************
+**********************************************************************
+(min-width: 1300px) for desktop todo?
+*********************************************************************/
+
+*{
+	box-sizing: border-box;
+	font-weight: normal;
+	font-size: 100%;
+}
+
+html,body{
+	background-color: #f2f2f2;
+	width:100vw;
+	height:100vh;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+}
+
+h1{
+	text-align: center;
+	margin-bottom: 10%; /* ten percent? oldie 70px; */
+	font-family: 'Passion One', cursive;
+	font-size: 2.25em;
+	letter-spacing: 0.2em;
+	color: #1a1a1a;
+}
+
+h2{
+	margin-bottom: 2%; /*30px; */
+}
+
+section{
+	width: 100vw;
+	margin:auto;
+}
+
+p, .title-services{
+	text-align: center;
+	line-height: 1.6em;
+	font-family: 'Libre Baskerville', serif;
+	font-style: italic;	
+	font-size: 1rem;
+	color: #1a1a1a;
+}
+
+#home-container {
+    height: 100vh;
+    width: 100vw;
+    /*margin: 0;
+    display: inline-block;*/
+}
+
+.home {
+    width: 100vw;
+    height: 100vh;
+    /*background-position:center 20%;
+    display: inline-block;*/
+}
+
+#about{
+    /*background: blue;  */
+    width: 90vw;
+    height:100vh;
+    margin:auto;
+}
+
+#photo-container{
+	margin: 10% auto 0 auto;
+	width: 90vw;
+	height: 75vh;/*600px;*/
+}
+
+.photo{
+    width: 100%;
+    height: 30%;/*180px;*/
+    margin-bottom: 1%;
+    position: relative;
+    -webkit-perspective: 100%;
+    perspective: 100%;
+    text-align: center;
+    font-family: 'Passion One', cursive;
+    font-size: 2.25em;
+    letter-spacing: 0.2em;
+    color: #1a1a1a;
+}
+
+.first-box, .second-box, .third-box{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   -webkit-transform: translateZ( -9% );
+   transform: translateZ( -9%);
+   -webkit-transform-style: preserve-3d;
+
+       transform-style: preserve-3d;
+   -webkit-transition: -webkit-transform 1s;
+           transition: transform 1s;
+   -webkit-transform-origin: center center;
+       -ms-transform-origin: center center;
+           transform-origin: center center;
+}
+
+.first-box figure, .second-box figure, .third-box figure{
+   width: 100%; /* umm toReview*/
+   height: 100%;
+    margin: 0;
+   display: block;
+   position: absolute;
+}
+
+/* below should be after background-image that loads pics? make diff without here?>= */
+.second-box figure{	
+   background-position: 0% -100%; /*0 -180px;*/
+}
+
+.third-box figure{	
+   background-position: 0% -200%; /*0 -360px;*/
+}
+
+#name-container, #name-container02, #name-container03{
+	position: absolute;
+	pointer-events: none;
+	margin: auto;
+	margin-top:-10%;
+	width: 100vw;
+	height: 15%;
+}
+
+.line-container{
+	margin-bottom: 2%;
+}
+
+#services{
+    height: 70vh; /* 460px; */
+    width: 100vw;
+    margin:auto;
+    text-align: center;
+}
+
+#services div{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	line-height: 1.6em;
+	letter-spacing: 1px;
+	color: #1a1a1a;
+}
+
+#services span{
+	display: inline-block;
+	margin-bottom: 25px;
+	height: 65px;
+	width: 100%;
+}
+
+#contact{
+	width: 100vw;
+    height:70vh; /* toSee */
+    margin:auto;
+}

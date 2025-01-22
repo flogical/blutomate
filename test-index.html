@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blu-Tomato - Digital studio</title>
+
+    <link href="css/main.css" rel="stylesheet">
+
+    <!--<link rel="stylesheet" rel="stylesheet" type="text/css" 
+    media="screen and (min-width: 768px) and (max-width: 1023px)" href="css/main-large.css" />
+    using main for taablettes and toReview later
+    -->
+
+    <link rel="stylesheet" rel="stylesheet" type="text/css" 
+    media="screen and (min-width: 400px) and (max-width: 767px)" href="css/main-mid.css" />
+
+    <link rel="stylesheet" rel="stylesheet" type="text/css" 
+    media="screen and (max-width: 399px)" href="css/main-small.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Passion+One:700|Libre+Baskerville:400italic|Open+Sans:300,400" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/jquery.transit.min.js"></script>
+    <script src="js/in-view.min.js"></script>
+    <!--<script src="js/lib/jquery.waypoints.min.js"></script> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
+    <!--<script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script> -->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w"></script> diable for now-->
+
+  </head>
+
+  <body>
+
+    <section id="home-container">
+      <div class="home"></div>
+      
+      <div id="logo-container">
+        <div id="logo"></div>
+        <span></span>
+        <div id="text">Digital creation studio</div>
+      </div>
+
+      <div id="arrow"></div>
+    </section>
+
+    <main>
+        <section id="about">
+          <h1>  ABOUT </h1>
+          <p>
+            Blu-Tomato is a Digital Studio based out of West-End Toronto.</br> We are a team of experienced web designers, web developers and specialize in social media integration </br>as well as creating an adapted visual identity for our customers.</br>
+            Our three-person team is devoted to creating effective and visually pleasing designs, support our customers with their online presence and provide their clients with an exceptional web experience.
+          </p>
+        </section>
+        <section id="team">
+          <div id="photo-container">
+            <div class="photo">
+              <div class="first-box">
+                <figure class="front"></figure>
+                <figure class="back"></figure>      
+                <figure class="bottom"></figure>
+              </div>
+            </div>
+            <div class="photo">
+              <div class="second-box">
+                <figure class="front"></figure>
+                <figure class="bottom"></figure>
+                <figure class="back"></figure>
+              </div>
+            </div>
+            <div class="photo">
+              <div class="third-box">
+                <figure class="front"></figure>
+                <figure class="bottom"></figure>
+                <figure class="back"></figure>
+              </div>
+            </div>
+          </div>
+
+          <div id="name-container">
+            <div class="name-about">Salim</div>
+            <div class="line-container">
+              <div class="lineL"></div>
+              <div class="lineR"></div>
+            </div>
+            <div class="title">Project manager</div>
+          </div>
+          <div id="name-container02">
+            <div class="name-about">Simon</div>
+            <div class="line-container">
+              <div class="lineL"></div>
+              <div class="lineR"></div>
+            </div>
+            <div class="title">Designer</div>
+          </div>
+          <div id="name-container03">
+            <div class="name-about">Florent</div>
+            <div class="line-container">
+              <div class="lineL"></div>
+              <div class="lineR"></div>
+            </div>
+            <div class="title">Web developer</div>
+          </div>
+        </section>
+
+        <section id="services">
+          <h1>  SERVICES </h1>
+          <div id="first">
+            <span></span>
+            <h2 class="title-services">Design</h2>
+              Art direction </br>
+              Web design</br>
+              UI/UX</br>
+              Graphic design
+          </div>
+          
+          <div id="second">
+            <span></span>
+            <h2 class="title-services">Development</h2>
+            Front office development</br>
+            Back office development
+          </div>
+
+          <div id="third">
+            <span></span>
+            <h2 class="title-services">Consulting</h2>
+          Digital strategy</br>
+          SEO</br>
+          Community management
+          </div>  
+        </section>
+
+        <section id="contact">
+          <h1> CONTACT </h1>
+          <form id="form">
+          
+          <p id="returnmessage"></p>
+          <input type="text" id="name" placeholder="Name"/>
+          <input type="text" name="gotcha" class="gotcha" />
+            
+          <input type="text" id="email" placeholder="Email"/>
+            
+          <input type="text" id="object" placeholder="Object"/>
+            
+          <textarea id="message" placeholder="Message"></textarea>
+            <div id="btn"> 
+                <svg class="draw" height="50" width="100" shape-rendering="optimizeSpeed">
+                  <path d="M50 48 L3 48 L3 2 L50 2 " stroke="#000"  stroke-width="2" fill="none" />
+                  <path d="M49 48 L98 48 L98 2 L50 2 " stroke="#000"  stroke-width="2" fill="none" />
+                </svg>
+                <span ><input type="button" id="submit" value="Send"/></span>
+            </div>
+          </form>
+         
+          <p id="loader" style="display:none;"></p>
+        </section>
+
+        <div id="map-container">
+          <div id="adress-container">
+            <div id="adress">4 Chicora Ave,</br>Toronto, ON</div>
+
+          </div>
+          <div id="map"></div>
+        </div>
+    </main>
+
+    <footer>
+    </footer>
+
+  </body>
+<script> 
+  //google.maps.event.addDomListener(window, 'load', init); //deprecated?
+  //document.addEventListener('DOMContentLoaded',init); //disable for local testing--toRead**
+  var map;
+  function init() {
+      var mapOptions = {
+          center: new google.maps.LatLng(43.676506,-79.3980204),//43.665612,-79.456295),//43.676506583307656, -79.39802047405128
+          zoom: 15,
+          zoomControl: true, //false,
+          keyboardShortcuts: false,
+          noClear: true,
+          disableDoubleClickZoom: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          scrollwheel: false,
+          panControl: false,
+          streetViewControl: false,
+          draggable : true, //false,
+          overviewMapControl: false,
+          overviewMapControlOptions: {
+              opened: false,
+          },
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapId: "BLU_MAP_ID", //needed for the markers smh
+          styles: [ { "featureType": "road", "elementType": "labels.text.fill", "stylers": [ { "color": "#6cc7e5" } ] },{ "featureType": "landscape", "elementType": "geometry.fill", "stylers": [ { "color": "#08394b" } ] },{ "featureType": "road", "elementType": "labels.text.stroke", "stylers": [ { "color": "#071d26" } ] },{ "featureType": "road", "elementType": "geometry.fill", "stylers": [ { "color": "#071d26" } ] },{ "featureType": "road", "elementType": "geometry.stroke", "stylers": [ { "color": "#08465e" } ] },{ "featureType": "poi", "elementType": "geometry.fill", "stylers": [ { "color": "#083040" } ] },{ "featureType": "poi", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] },{ "featureType": "administrative", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit", "elementType": "geometry", "stylers": [ { "color": "#085776" } ] },{ "featureType": "water", "stylers": [ { "color": "#08536f" } ] } ],
+      }
+
+      var mapElement = document.getElementById('map');
+      var map = new google.maps.Map(mapElement, mapOptions);
+      var locations = [];
+
+      for (i = 0; i < locations.length; i++) {
+        if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
+        if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
+        if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
+        if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
+        if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
+        
+        marker = new google.maps.Marker({
+          icon: markericon,
+          position: new google.maps.LatLng(locations[i][5], locations[i][6]),
+          map: map,
+          title: locations[i][0],
+          desc: description,
+          tel: telephone,
+          email: email,
+          web: web
+        });
+        link = '';     
+      }
+
+      //umm should be out of for loop? >> empty icon '' to show marker
+      /*markery = new google.maps.Marker({ //Marker gon be deprecated
+          icon: '',
+          position: new google.maps.LatLng(43.676506,-79.3980204),
+          map: map,
+          title: 'Bluu',//locations[i][0],
+          desc: '',//description,
+          tel: '',//telephone,
+          email: '',//email,
+          web: '',//web
+        });*/
+
+      /*const markerz = new google.maps.marker.AdvancedMarkerElement({ //doesnt render..have to import library below smh...
+        map,
+        position: new google.maps.LatLng(43.676506,-79.3980204),
+        //position: {lat: 43.676506, lng: -79.3980204},
+      });*/
+
+      const marka = loadLibrary().then(({AdvancedMarkerElement})=>{ //res
+        //console.log('loadLibrary::RESULT= ',AdvancedMarkerElement); //only get the AdvancedMarkerElement function 
+        new AdvancedMarkerElement({
+          //const marker = new google.maps.Marker({
+          map,
+          position: new google.maps.LatLng(43.676506,-79.3980204),
+      });
+      });
+     
+    }
+
+    async function loadLibrary(){
+      return await google.maps.importLibrary("marker");
+    }
+
+</script>
+
+<script src="js/main.js"></script>
+</html>
