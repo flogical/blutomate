@@ -1,4 +1,6 @@
 jQuery.fn.redraw = function() {
+	//performance warning (but runs once at least!) 
+	// BUT could pose issue with responsive and diff viewports >> https://api.jquery.com/hide/
     return this.hide(0, function(){jQuery(this).show()});
 };
 
@@ -64,12 +66,16 @@ jQuery(document).ready(function($){
 
 	//TOUCH TO GO
 
-	$( "body" ).keypress(function( event ) {
-		if (( event.which == 32 )&&(introVisible==true)) {
+	//$( "body" ).keypress(function( event ) { // deprecated and replaced below
+	//	if (( event.which == 32 )&&(introVisible==true)) {
+	//		toggle3dBlock(!$('#home-container').hasClass('nav-is-visible'));
+	//	}
+	//});
+	$( "body" ).on( "keypress", function(event) {
+		if (( event.which == 32 )&&(introVisible==true)) { //space-bar smh
 			toggle3dBlock(!$('#home-container').hasClass('nav-is-visible'));
 		}
 	});
-
 	
 
 	$('.first-box').on('mouseover mouseout', function(){
@@ -82,6 +88,7 @@ jQuery(document).ready(function($){
 		$('.second-box .front').toggleClass('doHide', addOrRemove);	//serieux
 		$('.photo').toggleClass('launchRot01', addOrRemove);
 	}
+
 	function launchLine(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
 		console.log('launchLine= '+addOrRemoveLine);
@@ -98,7 +105,7 @@ jQuery(document).ready(function($){
 	function toggle3dBlock02(addOrRemove) {
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
 		$('.second-box .front').removeClass('doHide');  //toggleClass('doHide', !addOrRemove);
-		$('.third-box .bottom').toggleClass('doHide', !addOrRemove); //toSee with flip of flag
+		$('.third-box .bottom').toggleClass('doHide', !addOrRemove); 
 
 		$('.photo').toggleClass('launchRot02', addOrRemove);
 

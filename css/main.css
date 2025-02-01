@@ -98,9 +98,9 @@ p, .title-services{
 .nav-is-visible .home {
 	border:40px solid #fff;
 
-	-webkit-transform-origin: bottom bottom;
+	/*-webkit-transform-origin: bottom bottom;
     -ms-transform-origin: bottom bottom;
-        transform-origin: bottom bottom;
+        transform-origin: bottom bottom; wrong x-axis methink */
 
 	-webkit-transform: translateY(-500px) rotateX(90deg);
 	       transform: translateY(-500px) rotateX(90deg);
@@ -492,7 +492,7 @@ main.nav-is-visible{
 	font-weight: 300;
 	font-size: 0.875em;/*14px; */
 	line-height: 1.6em;
-	letter-spacing: 1px;
+	letter-spacing: 0.0625rem; /*1px; */
 	color: #1a1a1a;
 }
 

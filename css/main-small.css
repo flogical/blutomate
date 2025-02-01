@@ -37,6 +37,13 @@ section{
 	margin: 0;
 }
 
+#home-container{
+	height: 100vh; /* umm */
+}
+
+/*.home{
+	background-position:center center; 
+}*/
 
 /* Scroll down - App content*/
 main.nav-is-visible{
@@ -48,8 +55,7 @@ main.nav-is-visible{
 }
 
 #about{
-    /*background: blue;  */
-    width: 90vw;
+    width: 100vw; /* was 90..gotta be wider or equal than photo-container */
     margin:auto;
     height:auto;
     /*height:100vh; umm removal wont affect photos? nope better for scroll even but leaves huge empty space below?*/
@@ -277,7 +283,7 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	position: absolute;
 	/*height: 1px;
 	width:200px;*/
-    height: 0.0625em; 
+    height: 0.0625em;  /* ahh scale below changes width!! toReview */
     width: 12.5em; /*calc(0vw + 200px); try calc with % */
 	background-color: #fff;
 	opacity: 0;
@@ -353,22 +359,21 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	        transition: opacity 0.25s, transform 0.5s;
 }
 
-#services{ /*make in two columns */
+#services{ /*make in two columns? */
     height: 70vh;  /*460px; seems needed */
-    width: 90vw;
+    width: 100vw;
     margin: auto;
-    margin-top: 5.625em;
+    margin-top: 3.625em;
 }
 
-/*
+#services h1{
+	margin-bottom: 1em;
+}
+
 #services div{
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 300;
-	font-size: 14px; 
-	line-height: 1.6em;
-	letter-spacing: 1px;
-	color: #1a1a1a;
-}*/
+	width: 100%;
+	margin-bottom: 1.26rem;
+}
 
 #services span{
 	display: inline-block;
@@ -408,20 +413,26 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 }
 
 #contact{
-	width: 100vw;
+	width: 90vw;
     height: auto; /*  70vh*/
-    margin:auto;
-    margin-top: 5.625em;
+    margin:0 auto;
+    /*margin-top: 5.625em; */
 }
 
-#form {
+
+
+#form{
 	width: 100%;
 	margin:auto;	
 }
 
+#email {
+	margin-left: 0;
+}
+
 #message{
-    width: 90vw; /*860px; */
-	height: auto;/*200px; */
+    width: 100vw; /*90vw 860px; */
+	height: 12.5em;/*200px; */
 }
 
 #map-container{

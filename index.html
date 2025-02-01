@@ -14,7 +14,7 @@
       -->
 
       <link rel="stylesheet" rel="stylesheet" type="text/css" 
-      media="screen and (min-width: 400px) and (max-width: 767px)" href="css/main-mid-empty.css" />
+      media="screen and (min-width: 400px) and (max-width: 767px)" href="css/main-mid.css" />
 
       <link rel="stylesheet" rel="stylesheet" type="text/css" 
       media="screen and (max-width: 399px)" href="css/main-small.css" />
@@ -23,9 +23,11 @@
       <script src="js/jquery-3.7.1.min.js"></script>
       <script src="js/jquery.transit.min.js"></script>
       <script src="js/in-view.min.js"></script>
-      <!--<script src="js/lib/jquery.waypoints.min.js"></script> -->
+      <!--<script src="js/lib/jquery.waypoints.min.js"></script> test using cdn below-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
       
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
+      <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> see if mobile needed...-->
       <script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w"></script>
 
@@ -134,21 +136,22 @@
             <h1> CONTACT </h1>
             <form id="form">
             
-            <p id="returnmessage"></p>
-            <input type="text" id="name" placeholder="Name"/>
-            <input type="text" name="gotcha" class="gotcha" />
+              <p id="returnmessage"></p>
+              <input type="text" id="name" placeholder="Name"/>
+              <input type="text" name="gotcha" class="gotcha" />
+                
+              <input type="text" id="email" placeholder="Email"/>
+                
+              <input type="text" id="object" placeholder="Object"/>
+                
+              <textarea id="message" placeholder="Message"></textarea>
               
-            <input type="text" id="email" placeholder="Email"/>
-              
-            <input type="text" id="object" placeholder="Object"/>
-              
-            <textarea id="message" placeholder="Message"></textarea>
-              <div id="btn"> 
-                  <svg class="draw" height="50" width="100" shape-rendering="optimizeSpeed">
-                    <path d="M50 48 L3 48 L3 2 L50 2 " stroke="#000"  stroke-width="2" fill="none" />
-                    <path d="M49 48 L98 48 L98 2 L50 2 " stroke="#000"  stroke-width="2" fill="none" />
-                  </svg>
-                  <span ><input type="button" id="submit" value="Send"/></span>
+              <div id="btn">
+                <svg class="draw" height="50" width="100" shape-rendering="optimizeSpeed">
+                  <path d="M50 48 L3 48 L3 2 L50 2 " stroke="#000"  stroke-width="2" fill="none" />
+                  <path d="M49 48 L98 48 L98 2 L50 2 " stroke="#000"  stroke-width="2" fill="none" />
+                </svg>
+                <span><input type="button" id="submit" value="Send"/></span>
               </div>
             </form>
            
@@ -169,7 +172,7 @@
 
     </body>
   <script> 
-    //google.maps.event.addDomListener(window, 'load', init); //deprecated?
+    //google.maps.event.addDomListener(window, 'load', init); //deprecated
     document.addEventListener('DOMContentLoaded',init);
     var map;
     function init() {
@@ -252,7 +255,17 @@
         return await google.maps.importLibrary("marker");
       }
 
+      //test..toRemove as fires late anyway
+      var waypoint = new Waypoint({ //new Waypoint.Inview({
+        element: document.getElementById('arrow'), // $('#arrow')[0],
+        handler: function(direction) {
+          //alert('You have scrolled to a thing')
+          console.log('scrolled to arrow= '+direction);
+        }
+      })
+      
+
 </script>
   
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </html>
