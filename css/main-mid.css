@@ -10,7 +10,7 @@
 
 
 h1{
-	margin-bottom: 10%; /* 70px; || 4.375em*/
+	margin-bottom: 7%; /* 70px; || 4.375em*/
 }
 
 h2{
@@ -40,6 +40,11 @@ main.nav-is-visible{
 	height:auto;
     /*height:100vh; umm removal wont affect photos? nope better for scroll even*/
     margin:auto;
+}
+
+#about p{
+	width: 90vw;
+	margin:auto;
 }
 
 #photo-container{
@@ -105,25 +110,8 @@ main.nav-is-visible{
     background-image: url("../img/cropped/photo03.jpg");
 }
 
-
-/*
-.first-box .front, .second-box .bottom, .third-box .back{
-	background-image: url("../img/photo01.jpg");
-    background-size: cover;
-}
-
-.first-box .bottom, .second-box .front, .third-box .bottom{
-	background-image: url("../img/photo02.jpg");
-    background-size: cover;
-}
-
-.first-box .back, .second-box .back, .third-box .front{
-	background-image: url("../img/photo03.jpg");
-    background-size: cover;
-}*/
-
 .first-box figure, .second-box figure, .third-box figure{
-    background-position: 20% 0% ;
+    background-position: 50% 0% ;
 } 
 
 .second-box figure{	
@@ -136,8 +124,8 @@ main.nav-is-visible{
     background-position-y: -200%;
 }
 
-.third-box .front { /* wonder if can put elt tag like figure after class? */
-    background-position-x: 15%;
+.third-box .front {
+    background-position-x: 150%;
 }
 
 .front  {
@@ -186,6 +174,10 @@ main.nav-is-visible{
 	    -ms-transform-origin: center center;
 	        transform-origin: center center;  
 
+}
+
+.photo.launchRot03 .third-box .front { 
+	background-position-x: 50%;/*reset position...kinda jumps but oh well..toReview*/
 }
 
 #name-container, #name-container02, #name-container03{
@@ -269,9 +261,9 @@ main.nav-is-visible{
 
 .goLine .title{
 	opacity: 1;
-	-webkit-transform:translateY( 0 ); /* 10px */
-	    -ms-transform:translateY( 0 );
-	        transform:translateY( 0.625rem );
+	-webkit-transform:translateY( -0.625rem ); /* 10px */
+	    -ms-transform:translateY( -0.625rem );
+	        transform:translateY( -0.625rem );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
 	        transition: opacity 0.25s, transform 0.5s;
 }
@@ -331,9 +323,10 @@ main.nav-is-visible{
 }
 
 #contact{
-	width: 100vw;
-    height:auto; /* toSee */
-    margin: auto;
+	width: 90vw;
+    height: auto;
+    margin:0 auto;
+    margin-top: 5.625em; 
 }
 
 #form{
@@ -346,8 +339,12 @@ main.nav-is-visible{
 }
 
 #message{
-    width: 90%; /*90vw 860px; */
+    width: 90%; /*90%90vw 860px; */
 	height: 12.5em;/*200px; */
+}
+
+#map-container{
+	margin-top: 0px;
 }
 
 #map {

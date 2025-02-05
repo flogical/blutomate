@@ -37,18 +37,38 @@ section{
 	margin: 0;
 }
 
-#home-container{
-	height: 100vh; /* umm */
-}
+/*#home-container{
+	height: 100vh;  //umm? 
+}*/
 
 /*.home{
-	background-position:center center; 
+	background-position:center center;
 }*/
+
+/*
+#arrow{
+	pointer-events: all; Ensure click events are registered 
+	z-index :1000; 
+}*/
+
+/* 
+#Calque_1{
+	pointer-events: all; nope click still dont fire smh >>overlapping issue smdh
+	z-index :1000;
+}*/
+
+main{
+	position: absolute;
+	top:150%; /* push down or cant click on arrow*/
+	-webkit-transition: top 1s ease-in-out;
+
+        transition: top 1s ease-in-out;
+}
 
 /* Scroll down - App content*/
 main.nav-is-visible{
 	position: absolute;
-	top: 0.5em;
+	top: 0.3em;
 	-webkit-transition: top 1s 1s ease-in-out;
 
         transition: top 1s 1s ease-in-out;
@@ -63,15 +83,18 @@ main.nav-is-visible{
     */
 }
 
-/*#team{
-    width: 100vw;
-    /*height:100vh; umm removal wont affect photos? nope better for scroll even but leaves huge empty space below?
-    margin:auto;
-}*/
+#about p{
+	width: 90vw;
+	margin:auto;
+}
+
+#about h1{
+	margin-bottom: 0.375em;
+}
 
 #photo-container{
 	margin: 11% auto 0 auto;
-	width: 100vw;
+	width: 105vw; /* just fill width */
     height:auto; 
     /*height:max(600px, calc(75vh / 3))auto; auto seems to work but no margin :(...have to be set or uses main.css* 
 	/*height: 75vh; 75% prolly cant use % as no height in parent? ... 600px;
@@ -333,8 +356,8 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.2em;
 	opacity: 0;
-	-webkit-transform:translateY( 0 );
-    -ms-transform:translateY( 0 );
+	-webkit-transform:translateY( 0px );
+    -ms-transform:translateY( 0px );
         transform:translateY( 0px );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
 	        transition: opacity 0.25s, transform 0.25s;
@@ -352,8 +375,8 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 
 .goLine .title{
 	opacity: 1;
-	-webkit-transform:translateY( 0 ); /* use em 10px*/
-	    -ms-transform:translateY( 0 );
+	-webkit-transform:translateY( -0.625rem ); /* 10px*/
+	    -ms-transform:translateY( -0.625rem );
 	        transform:translateY( 0.625rem );
 	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
 	        transition: opacity 0.25s, transform 0.5s;
@@ -419,8 +442,6 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
     /*margin-top: 5.625em; */
 }
 
-
-
 #form{
 	width: 100%;
 	margin:auto;	
@@ -431,16 +452,15 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 }
 
 #message{
-    width: 100vw; /*90vw 860px; */
+    width: 100%; /*90vw 860px; */
 	height: 12.5em;/*200px; */
 }
 
 #map-container{
-	position: relative;
-	margin-top: 105px;
+	margin-top: 0px;
 }
 
-#adress-container{
+/*#adress-container{
 	position: absolute;
 	left: 50%;
 	margin-left:-127px;
@@ -461,10 +481,10 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	font-size: 16px;
-}
+}*/
 
 #map {
-	margin-top: 80px;
+	margin-top: 5em;/*80px; */
 	height:auto; /*400px; */
 	width:100vw;
 }

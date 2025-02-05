@@ -161,7 +161,7 @@ p, .title-services{
 	bottom: 20px;
 	display: block;
 	cursor: pointer;
-	background: url("../arrow.svg") no-repeat;
+	background: url("../img/arrow.svg") no-repeat;
 	opacity: 1;
 	-webkit-transition:opacity 0.5s,2s ease-in-out;
 

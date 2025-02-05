@@ -10,7 +10,7 @@
 
       <!--<link rel="stylesheet" rel="stylesheet" type="text/css" 
       media="screen and (min-width: 768px) and (max-width: 1023px)" href="css/main-large.css" />
-      using main for taablettes and toReview later
+      using main for tablettes and toAdd later
       -->
 
       <link rel="stylesheet" rel="stylesheet" type="text/css" 
@@ -21,13 +21,17 @@
 
       <link href="https://fonts.googleapis.com/css?family=Passion+One:700|Libre+Baskerville:400italic|Open+Sans:300,400" rel="stylesheet" type="text/css">
       <script src="js/jquery-3.7.1.min.js"></script>
+      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> ...compatible with jQuery mobile below-->
       <script src="js/jquery.transit.min.js"></script>
       <script src="js/in-view.min.js"></script>
       <!--<script src="js/lib/jquery.waypoints.min.js"></script> test using cdn below-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
       
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
-      <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> see if mobile needed...-->
+      <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> <!--yup needed for mobile touch 
+        BUT gotta have version compatible with jquery smdh... jQuery versions 1.7.2 to 1.9.1. can also Use jQuery 1.11.2
+      revert as adds unwanted css -->
+      
       <script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w"></script>
 
@@ -195,7 +199,19 @@
             },
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapId: "BLU_MAP_ID", //needed for the markers smh
-            styles: [ { "featureType": "road", "elementType": "labels.text.fill", "stylers": [ { "color": "#6cc7e5" } ] },{ "featureType": "landscape", "elementType": "geometry.fill", "stylers": [ { "color": "#08394b" } ] },{ "featureType": "road", "elementType": "labels.text.stroke", "stylers": [ { "color": "#071d26" } ] },{ "featureType": "road", "elementType": "geometry.fill", "stylers": [ { "color": "#071d26" } ] },{ "featureType": "road", "elementType": "geometry.stroke", "stylers": [ { "color": "#08465e" } ] },{ "featureType": "poi", "elementType": "geometry.fill", "stylers": [ { "color": "#083040" } ] },{ "featureType": "poi", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] },{ "featureType": "administrative", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },{ "featureType": "transit", "elementType": "geometry", "stylers": [ { "color": "#085776" } ] },{ "featureType": "water", "stylers": [ { "color": "#08536f" } ] } ],
+            styles: [ { "featureType": "road", "elementType": "labels.text.fill", 
+            "stylers": [ { "color": "#6cc7e5" } ] },
+            { "featureType": "landscape", "elementType": "geometry.fill", "stylers": [ { "color": "#08394b" } ] },
+            { "featureType": "road", "elementType": "labels.text.stroke", "stylers": [ { "color": "#071d26" } ] },
+            { "featureType": "road", "elementType": "geometry.fill", "stylers": [ { "color": "#071d26" } ] },
+            { "featureType": "road", "elementType": "geometry.stroke", "stylers": [ { "color": "#08465e" } ] },
+            { "featureType": "poi", "elementType": "geometry.fill", "stylers": [ { "color": "#083040" } ] },
+            { "featureType": "poi", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] },
+            { "featureType": "administrative", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },
+            { "featureType": "transit", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },
+            { "featureType": "transit", "elementType": "geometry", "stylers": [ { "color": "#085776" } ] },
+            { "featureType": "water", "stylers": [ { "color": "#08536f" } ] } 
+            ],
         }
 
         var mapElement = document.getElementById('map');
@@ -260,12 +276,23 @@
         element: document.getElementById('arrow'), // $('#arrow')[0],
         handler: function(direction) {
           //alert('You have scrolled to a thing')
-          console.log('scrolled to arrow= '+direction);
+          //console.log('scrolled to arrow= '+direction);
         }
       })
+
+    
+
+    /*$(document).ready(function() {
+      $("#arrow").vclick(function() {
+        consoley.log("arrowVVeyCLICK");
+      console.log("arrowVVCLICK!!");
+      });
+    });*/
+      
       
 
 </script>
   
-<script src="js/main.js"></script>
+<!--<script src="js/main.js"></script>-->
+<script src="js/main-redo.js"></script>
 </html>

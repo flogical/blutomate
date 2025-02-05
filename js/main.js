@@ -4,10 +4,28 @@ jQuery.fn.redraw = function() {
     return this.hide(0, function(){jQuery(this).show()});
 };
 
+
 jQuery(document).ready(function($){
 	
 	jQuery('body').redraw();
+	//console.log(navigator.userAgentData.mobile);
+	//console.log(navigator.userAgentData.brands);
+	//console.log(navigator.userAgentData.platform);
+
 	
+	let w = $( window ).width();
+	let d = $( document ).width();//huh larger than window?!?
+	let h = $( window ).height();
+	let hd = $( document ).height();
+
+	var consoley = {
+		log: function(msg) { alert(msg); }
+	};
+//	window.alert("euuuh"+ w+" "+ d+" "+ h+" "+ hd);	
+
+	//consoley.log("euuuh"+ w+" "+ d+" "+ h+" "+ hd);
+	console.log("euuuh", w, d, h, hd);
+
 	var introVisible = true;
 	var scrollPos;
 
@@ -27,10 +45,13 @@ jQuery(document).ready(function($){
 		$('main').toggleClass('nav-is-visible', addOrRemove);
 		$('#home-container').toggleClass('nav-is-visible', addOrRemove);
 		$('#arrow').toggleClass('nav-is-visible', addOrRemove);
+
+		//$("h1, h2, p").toggleClass("blue");
 	
 	}
 
 	function activateScroll() {
+		console.log("activateScroll..gon scroll--onTransionEnd?");
 		$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
 			function(e) {
 				window.onscroll = function () {};
@@ -48,24 +69,53 @@ jQuery(document).ready(function($){
 
 	//Scroll up
 	$('main').on('mousewheel', function(event) {
+		console.log("mousewheel..onTransionEnd?",introVisible, event.deltaY,window.scrollY);
 		if ( (event.deltaY>0)&&(introVisible==false)&&(window.scrollY==0) ){
 			toggle3dBlock(!$('main').hasClass('nav-is-visible'));
 
 			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
 			function(e) {
-				window.onscroll = function () { window.scrollTo(0, 0); };
+				window.onscroll = function () { window.scrollTo(0, 0); };//TOFIX** asprolly cause of not scrolling down sometimes!!
 			});
 			$('#logo-container').transition({opacity: 1, scale: 1, delay:100},500)
 
-		}
+		}//else{console.log("mousewheel..NO Scrolly");}
 	});
 
-	$('#arrow').click(function() {
+	$('#arrow').click(function() { //dont fire in desktop..phew
+		//consoley.log("arrowCLICK");
+		console.log("arrowCLICK!!");
 		toggle3dBlock();
 	});
+	
+	//grr borks with undefined reading 'concat' error smdh--version compatibility with jquery 
+	//$(document).ready(function() {
+		/*$("#arrow").on( "vclick",function() { //also works!--BUT not in mobile smh still
+		//$(document).on( "vclick", "#arrow", function() { //works
+		  consoley.log("arrowVVedddyCLICK");
+		  console.log("arrowVdddVCLICK!!");
+		});*/
+	//});
+
+	$("#arrow").on('touchstart', function(e) { //STILL nope in android browser grrr
+	//$(document).on( "touchstart", "#arrow", function() { 
+        console.log("arrowtouchstart....!!");
+		e.preventDefault(); //dont continue with click handler above in mobile? >>yup!!
+		toggle3dBlock();
+    });
+	//$(document).ready(function() { //works for logo!! WTF?
+		//$("#logo").on('touchstart', function() {
+		$('div').on('touchstart', '#arrow',function() { //nope with section nor #home-container..works with #logo still!!
+		  console.log("logotouchyyystart....!!"); //--size issue? still no go adding css: pointer-events: all; 
+		  //COULD be overlapping with 'main' which prevents click events? 
+		  // --z-index ? >>nope!
+		  // move main down!! >> YESS!! and all the above handlers work afterwards...oestii
+		  //huh dont seem to work when jquery mobile is removed!?! --or need to be wrapped in (document).ready()? toTry** maybe
+		  });
+		//});
+	
 
 	//TOUCH TO GO
-
 	//$( "body" ).keypress(function( event ) { // deprecated and replaced below
 	//	if (( event.which == 32 )&&(introVisible==true)) {
 	//		toggle3dBlock(!$('#home-container').hasClass('nav-is-visible'));
@@ -78,6 +128,7 @@ jQuery(document).ready(function($){
 	});
 	
 
+	//////////// Pouet 01
 	$('.first-box').on('mouseover mouseout', function(){
 		toggle3dBlock01(!$('.photo').hasClass('launchRot01'));
 		launchLine(!$('#name-container').hasClass('goLine'));
@@ -97,7 +148,7 @@ jQuery(document).ready(function($){
 
 	//////////// Pouet 02
 
-	$('.second-box').on('mouseover mouseout ', function(){
+	$('.second-box').on('mouseover mouseout', function(){
 		toggle3dBlock02(!$('.photo').hasClass('launchRot02'));
 		launchLine02(!$('#name-container02').hasClass('goLine'));
 	});
@@ -113,9 +164,10 @@ jQuery(document).ready(function($){
 		$('.third-box .front').toggleClass('doHide', addOrRemove);
 		$('.third-box .back').toggleClass('doHide', addOrRemove);
 	}
+
 	function launchLine02(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
-		//console.log('launchLine= '+addOrRemoveLine);
+		console.log('launchLine02= '+addOrRemoveLine);
 		$('#name-container02').toggleClass('goLine', addOrRemoveLine);
 
 	}
@@ -137,15 +189,16 @@ jQuery(document).ready(function($){
 
 	function launchLine03(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
-		console.log('launchLine= '+addOrRemoveLine);
+		console.log('launchLine03= '+addOrRemoveLine);
 		$('#name-container03').toggleClass('goLine', addOrRemoveLine);
 	}
 
-	$(document).on('scroll',function(){
-		if($(this).scrollTop()>= $('#photo-container').position().top){
-			//console.log('scrolled past photo-container?');
+	/*$(document).on('scroll',function(){
+		let p = $('#photo-container').position().top ;
+		if($(this).scrollTop()>= p){ //$('#photo-container').position().top){
+			console.log('scrolled past photo-container?',p);
 		}
-	})
+	});*/
 
 	function doReset(){
 		document.getElementById("loader").style.display = "none";
