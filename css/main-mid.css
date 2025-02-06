@@ -22,9 +22,9 @@ section{
 	margin:auto;
 }
 
-#home-container{
-	height: 100vh; /* umm */
-}
+/*#home-container{
+	height: 100vh;  //umm..prolly causes long height? >>done seem so  
+}*/
 
 /* Scroll down - App content*/
 main.nav-is-visible{
@@ -34,6 +34,11 @@ main.nav-is-visible{
 
         transition: top 1s 1s ease-in-out;
 }
+
+#arrow{
+	bottom: 1.25em; /*20px; prolly should use calc?..*/
+}
+
 
 #about{
     width: 100vw;

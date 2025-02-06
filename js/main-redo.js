@@ -13,6 +13,7 @@ jQuery(document).ready(function($){
 	//console.log(navigator.userAgentData.mobile); //huh could bork in Android?
 
 	let w = $( window ).width();
+	//let iw = $( window ).innerWidth(); //huh works with jquery == w above BUT window.innerWidth == d below...huh?
 	let d = $( document ).width();//huh larger than window?!? >> 'document' could extend far beyond 'window'
 	let h = $( window ).height();
 	let hd = $( document ).height();
@@ -30,9 +31,9 @@ jQuery(document).ready(function($){
 	const eventType = 'ontouchstart' in window ? 'pointerenter pointerleave' : 'mouseover mouseout';
 
 	//consoley.log("euuuh"+ w+" "+ d+" "+ h+" "+ hd);
-	console.log("euuuh:Sizes", w, d, h, hd,wheelType,eventType);
+	console.log("euuuh:Sizes", w, d, h, hd,wheelType,eventType); //iw, //'ondragstart' in window == true
 
-	//fires lots ---prolly needed even?!? toReview**
+	//fires lots ---prolly needed ?!? toReview**
 	window.onscroll = function () { window.scrollTo(0, 0);}; 
 
 	$('#logo-container')
@@ -58,9 +59,24 @@ jQuery(document).ready(function($){
 	function activateScroll() {
 		$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
 			function(e) {
-				//console.log("activateScroll..?!?",introVisible,e); //sometimes fires twice...prolly ok?
+				//console.log("activateScroll..?!?",introVisible); //sometimes fires twice...prolly ok?
 				window.onscroll = function () {};
 			});
+	}
+	
+
+	function getOffTop(elm){return $(selector).offsetLeft;}
+	function printy(elm){
+		//let elementTop = $('main').offset().top;
+		let offy = $(elm).offset();
+		console.log("printy:: "+elm,offy);
+		return ;
+	}
+
+	function isAtEnd(element){ //true if an element is at the end of its scroll, false if it isn't. >>going down
+		//console.log("isAtEnd","scrollHeight="+ element.scrollHeight,"scTop="+element.scrollTop,"clientHeight="+element.clientHeight); //scrollTop == 0 always?
+		
+		return element.scrollHeight - element.scrollTop === element.clientHeight;
 	}
 	
 	//Scroll down
@@ -74,9 +90,9 @@ jQuery(document).ready(function($){
 		//console.log("Scrolling DOWN..?",deltY)
 		if ( introVisible && deltY ){ //event.deltaY<0
 			//let visible = $('#home-container').hasClass('nav-is-visible');
-			//event.originalEvent.deltaY<2  // originalEvent wrong value>>see above toReview**
+			//event.originalEvent.deltaY<2  // originalEvent wrong value>>see above
 
-			console.log("Scrolling DOWN:: home-container",visible,deltY,event.deltaY, event.originalEvent.deltaY);
+			//console.log("Scrolling DOWN:: home-container",visible,deltY,event.deltaY, event.originalEvent.deltaY);
 			toggle3dBlock(!visible);
 
 			//transition OR animate? no diff
@@ -86,6 +102,25 @@ jQuery(document).ready(function($){
 			  //}); 
 		}//else{console.log("Scrolling DOWN..NOPE",visible, deltaY,event.deltaY, wheelType, event.originalEvent.deltaY, window.scrollY);}
 	});
+	let lastKnownScrollPosition = 0;
+	let lastEventType; //ball.ondragstart = () => false; >>to Prevent native drag’n’drop from happening--works for mouse events
+	$('#home-container').on('pointerup pointercancel', function (event) { //umm pointercancel >>helps when doing pointermove--but toReview* as single click smh
+		if (lastEventType == event.type) { //so should use with 'pointermove' ; //todo**
+			//console.log("home-container >>>DOWNing::SAME?",lastEventType ,event.type);
+			return;
+		}
+		lastEventType = event.type;
+
+		let i = isAtEnd(this);
+		let visible = $('#home-container').hasClass('nav-is-visible');
+		//console.log("home-container >>>DOWNing", i ,visible, introVisible, event.type, event.clientY);
+		if (introVisible && i){ //adding i though prolly redundant?
+			toggle3dBlock(!visible);
+			$('#logo-container').transition({opacity: 0, scale: 1.1},500);
+			//umm preventDefault(): ?!? no need prolly...
+			lastKnownScrollPosition = event.clientY ; //for when scroll back up with pointer
+		}
+	});
 
 	//Scroll up
 	//huh for scroll up >> event.deltaY,event.originalEvent.deltaY NOT always exact reverse as for scroll down above
@@ -93,17 +128,17 @@ jQuery(document).ready(function($){
 		//event.preventDefault(); // Prevent user scroll during page jump --nah
 		let visible = $('main').hasClass('nav-is-visible');
 		let deltaY = wheelType == "wheel" ? event.originalEvent.deltaY < 0 : event.deltaY > 0
-		if ( (deltaY)&&(introVisible==false)&&(window.scrollY==0) ){
+		if ( (deltaY)&&(introVisible==false)&&(window.scrollY==0) ){ //window.scrollY is how far main is from top and should be 0!
 			//let visible = $('main').hasClass('nav-is-visible');
 			//(event.deltaY>0)
 
-			console.log("Scrolling UP::main",visible,deltaY, event.deltaY,event.originalEvent.deltaY);
+			//console.log("Scrolling UP::main",visible,deltaY, event.deltaY,event.clientY,event.originalEvent.deltaY);
 			
 			toggle3dBlock(!visible);
 
 			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
 			function(e) {
-				console.log("window Scrolling up...",visible, introVisible,event.originalEvent.deltaY, event.deltaY,window.scrollY);
+				//console.log("window::main Scrolling up...",visible, introVisible,event.originalEvent.deltaY, event.deltaY,window.scrollY);
 				window.onscroll = function () { window.scrollTo(0, 0); };
 			});
 
@@ -113,10 +148,67 @@ jQuery(document).ready(function($){
 			  //});
 		}//else{console.log("Scrolling UP..NOPE",visible, introVisible,deltaY,event.deltaY,window.scrollY,event.originalEvent.deltaY);}
 	});
-
 	let deltaY = 0;
-	let lastKnownScrollPosition = 0;//add pointermove?
-	$('main').on('pointerup pointercancel', function (event) { //pointerdown pointermove pointerup
+	let lastMainEventType;
+	//let lastKnownScrollPosition = 0;
+	//pointercancel seem last and handle this...cause of scroll?!? should add others? >>pointermove fires too much
+	$('main').on('pointerdown pointermove pointerup', function (event) { // bon not handling 'pointercancel' and muck up pointermove
+		//event.preventDefault(); // Prevents unwanted scrolls or zooms ...umm still last to handle pointer event...gotta prevent native drag&drop with ondragstart = false + touch-action css...todo**
+		if (lastMainEventType == event.type) { //to handle pointermove firing too much
+			console.log("main >>>UPPing::SAME?",lastMainEventType ,event.type,event.clientY,event.pointerId);
+			return;
+		}
+		lastMainEventType = event.type;
+
+		if ('pointerdown' == event.type) { //thumb.setPointerCapture(event.pointerId);
+			let bout = $('#about');
+			//$(bout).css('touch-action', 'none'); //umm bad as cant scroll no more...use pan-y? toTry**
+			//$(bout).setPointerCapture(event.pointerId); //umm works?! >>nope gotta use >>container.querySelector('main')
+			return; //bon stops one click at least
+		}
+
+		//pointerup for reset and continue below---todo**
+		// //element.hasPointerCapture(e.pointerId)--prolly also need .querySelector
+
+		let visible = $('main').hasClass('nav-is-visible');
+
+		//let a = $("main")[0].getBoundingClientRect();
+		let b = this.getBoundingClientRect(); //equivalent to above
+		//let offy = this.offset().top; //nope dont exist?!? >>below works tho...cause grabbing section?>>OH prolly cause using 'this' (works otherwise!!)
+		//let elementTop = $('#about').offset().top;
+		//printy('#about');
+		//printy('main');
+
+		let oldy = lastKnownScrollPosition;
+		deltaY = $(window).scrollTop() - lastKnownScrollPosition;
+		lastKnownScrollPosition = window.scrollY; //$(window).scrollTop();
+		//console.log("main::GOINnn UP?!?", event.type,event.pointerId,introVisible,oldy, deltaY,b.top,$(window).scrollTop(),event.clientY); //window.scrollY == $(window).scrollTop()
+		
+		//"scTop="+this.scrollTop, always 0...or only for window? >>seems so
+		//"scrollHeight="+ this.scrollHeight,"clientHeight="+this.clientHeight, >>remain the same
+		//let oldy = lastKnownScrollPosition;
+		//deltaY = $(window).scrollTop() - lastKnownScrollPosition;
+		//toSee using pointerup
+		if (deltaY >= 0 && introVisible==false && event.type == 'pointerup' && window.scrollY==0) { //window.scrollY==0 >>def needed or can jump when later down page...
+			toggle3dBlock(!visible);
+
+			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',
+			function(e) {
+				//console.log("POINTER Scrolling up...",event.type);//lastKnownScrollPosition,introVisible
+				window.onscroll = function () { window.scrollTo(0, 0); };
+			});
+
+			$('#logo-container').transition({opacity: 1, scale: 1, delay:100},500);//,function() {
+				// Animation complete.
+				//console.log("logo-container::transition UP complete");
+			  //});
+		}
+
+	});
+
+	//let deltaY = 0;
+	//let lastKnownScrollPosition = 0;//add pointermove?
+	/*$('main').on('pointerup pointercancel', function (event) { //pointerdown pointermove pointerup
 		event.preventDefault(); // Prevents unwanted scrolls or zooms
 		let visible = $('main').hasClass('nav-is-visible');
 
@@ -147,7 +239,7 @@ jQuery(document).ready(function($){
 				//console.log("logo-container::transition UP complete");
 			  //});
 		}else{console.log("POINTER UP..NOPE",event.type,deltaY)}; 
-	});
+	});*/
 
 	// Handle both touch and mouse interactions.
 	//$('div').on('pointerdown', '#arrow',function(e) { //dont fire in this form
@@ -156,7 +248,7 @@ jQuery(document).ready(function($){
 		//console.log("arrowCLICK....!!", e.clientY,e.screenY); //'mouse' on desktop, 'touch' on mobile
 		//e.preventDefault(); //dont continue with click handler above in mobile? >>yup!!--still needed?
 		toggle3dBlock();
-		lastKnownScrollPosition = e.clientY ; //for when scroll back up with pointer
+		//lastKnownScrollPosition = e.clientY ; //for when scroll back up with pointer
 
 	});
 

@@ -37,8 +37,8 @@ section{
 	margin: 0;
 }
 
-/*#home-container{
-	height: 100vh;  //umm? 
+/* #home-container{
+	height: 100vh; //umm? helps with arrow? nah prolly not
 }*/
 
 /*.home{
@@ -72,6 +72,10 @@ main.nav-is-visible{
 	-webkit-transition: top 1s 1s ease-in-out;
 
         transition: top 1s 1s ease-in-out;
+}
+
+#arrow{
+	bottom: 1.25em; /*20px; prolly should use calc?..*/
 }
 
 #about{
