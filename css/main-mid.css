@@ -22,9 +22,13 @@ section{
 	margin:auto;
 }
 
-/*#home-container{
-	height: 100vh;  //umm..prolly causes long height? >>done seem so  
-}*/
+#home-container{
+	height: 90vh;  /*/umm..prolly causes long height? >>dont seem so  but better to set it at 90vh..toSee*/
+}
+
+main{
+	top:150%; /* push down or cant click on arrow ..toReview* */
+}
 
 /* Scroll down - App content*/
 main.nav-is-visible{
@@ -60,7 +64,7 @@ main.nav-is-visible{
 
 .photo{
     width: 100%;
-	height: 180px; /*30%*/
+	height: 90px; /*30% 180px but using same as small.css*/
 	margin-bottom: 0.325rem;/*1%;*/
 	position: relative;
 	-webkit-perspective: 1000px;
@@ -104,20 +108,17 @@ main.nav-is-visible{
 }
 
 .first-box .front, .second-box .bottom, .third-box .back{
-    background-image: url("../img/cropped/photo01.jpg"); 
+    background-image: url("../img/resized/photo01.jpg"); /* url("../img/cropped/photo01.jpg"); */
 }
 
 .first-box .bottom, .second-box .front, .third-box .bottom{
-    background-image: url("../img/cropped/photo02.jpg");
+    background-image: url("../img/resized/photo02.jpg");
 }
 
 .first-box .back, .second-box .back, .third-box .front{
-    background-image: url("../img/cropped/photo03.jpg");
+    background-image: url("../img/resized/photo03.jpg");
 }
 
-.first-box figure, .second-box figure, .third-box figure{
-    background-position: 50% 0% ;
-} 
 
 .second-box figure{	
 	/*background-position: -100% -100% ;  percent better; !important  */
@@ -129,8 +130,14 @@ main.nav-is-visible{
     background-position-y: -200%;
 }
 
+/* def no need with using resized pics
 .third-box .front {
     background-position-x: 150%;
+} */
+
+
+.photo .doHide{
+    display: none; /* still needed to hide those perspective imgs smh */
 }
 
 .front  {
@@ -349,11 +356,15 @@ main.nav-is-visible{
 }
 
 #map-container{
-	margin-top: 0px;
+	margin-top: 6.5em; /* better spacing with send btn */
+}
+
+#adress-container{
+	top: -3.43em; /*-25px;but pushed up */
 }
 
 #map {
 	margin-top: 5rem;/*80px; */
-	height:auto; /*400px; */
+	height:24em; /*need height map not shown with auto 400px; */
 	width:100vw;
 }

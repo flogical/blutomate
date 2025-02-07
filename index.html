@@ -32,8 +32,10 @@
         BUT gotta have version compatible with jquery smdh... jQuery versions 1.7.2 to 1.9.1. can also Use jQuery 1.11.2
       revert as adds unwanted css -->
       
-      <!--<script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script> redundant prolly? -->
-      <script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w"></script>
+      <!--<script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script> redundant... testing below
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=init"></script> -->
+      
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w&callback=init"></script>
 
     </head>
 
@@ -175,11 +177,11 @@
       </footer>
 
     </body>
-  <script> 
+    <script> 
     //google.maps.event.addDomListener(window, 'load', init); //deprecated
-    document.addEventListener('DOMContentLoaded',init);
-    var map;
-    function init() {
+    
+    let map;
+    async function init() {
         var mapOptions = {
             center: new google.maps.LatLng(43.676506,-79.3980204),//43.665612,-79.456295),//43.676506583307656, -79.39802047405128
             zoom: 15,
@@ -256,30 +258,33 @@
           //position: {lat: 43.676506, lng: -79.3980204},
         });*/
 
+        async function loadLibrary(){
+          return await google.maps.importLibrary("marker");
+        }
+
         const marka = loadLibrary().then(({AdvancedMarkerElement})=>{ //res
           //console.log('loadLibrary::RESULT= ',AdvancedMarkerElement); //only get the AdvancedMarkerElement function 
           new AdvancedMarkerElement({
             //const marker = new google.maps.Marker({
             map,
             position: new google.maps.LatLng(43.676506,-79.3980204),
+          });
         });
-        });
-       
       }
 
-      async function loadLibrary(){
-        return await google.maps.importLibrary("marker");
+
+    //test..toRemove as fires late anyway
+    var waypoint = new Waypoint({ //new Waypoint.Inview({
+      element: document.getElementById('arrow'), // $('#arrow')[0],
+      handler: function(direction) {
+        //alert('You have scrolled to a thing')
+        //console.log('scrolled to arrow= '+direction);
       }
+    });
 
-      //test..toRemove as fires late anyway
-      var waypoint = new Waypoint({ //new Waypoint.Inview({
-        element: document.getElementById('arrow'), // $('#arrow')[0],
-        handler: function(direction) {
-          //alert('You have scrolled to a thing')
-          //console.log('scrolled to arrow= '+direction);
-        }
-      })
+    //document.addEventListener('DOMContentLoaded',init); //using callback instead 
 
+    //google.maps.event.trigger( map, 'resize' ); //helps for display on small? meh...had to set css height
     
 
     /*$(document).ready(function() {
@@ -288,10 +293,8 @@
       console.log("arrowVVCLICK!!");
       });
     });*/
-      
-      
 
-</script>
+  </script>
   
 <!--<script src="js/main.js"></script>-->
 <script src="js/main-redo.js"></script>
