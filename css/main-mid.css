@@ -135,9 +135,32 @@ main.nav-is-visible{
     background-position-x: 150%;
 } */
 
-
 .photo .doHide{
     display: none; /* still needed to hide those perspective imgs smh */
+}
+
+/*@media (pointer: none|coarse|fine) {} //complains with OR(|) so should use (and) prolly....
+ none >> does not include a pointing device.
+ coarse >> pointing device of limited accuracy, such as a finger on a touchscreen.
+ fine >> accurate pointing device, such as a mouse, touchpads, and drawing styluses.
+ */
+@media (pointer: coarse) {
+	/* stops menu? >> not in emu desktop browser >>had to handle contextMenu*/
+	.first-box figure, .second-box figure, .third-box figure {
+		/*touch-action: none; :BEWARE:: >> below does not fire any pointer event and for scrolling up, had to check for class on div parent */
+		pointer-events: none;
+	}
+	
+	/*umm or should be outside of media query >>meh no need
+	 >>layering a "shield" div on top of the image to intercept touch events...gotta disable above css rule >> doesnt allow any touch tho...removed
+	.shield {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+	}*/
 }
 
 .front  {
