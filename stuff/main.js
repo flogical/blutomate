@@ -1,14 +1,36 @@
 jQuery.fn.redraw = function() {
+	//performance warning (but runs once at least!) 
+	// BUT could pose issue with responsive and diff viewports >> https://api.jquery.com/hide/
     return this.hide(0, function(){jQuery(this).show()});
 };
 
+
 jQuery(document).ready(function($){
-	jQuery('body').redraw();
 	
+	jQuery('body').redraw();
+	//console.log(navigator.userAgentData.mobile);
+	//console.log(navigator.userAgentData.brands);
+	//console.log(navigator.userAgentData.platform);
+
+	
+	let w = $( window ).width();
+	let d = $( document ).width();//huh larger than window?!?
+	let h = $( window ).height();
+	let hd = $( document ).height();
+
+	var consoley = {
+		log: function(msg) { alert(msg); }
+	};
+//	window.alert("euuuh"+ w+" "+ d+" "+ h+" "+ hd);	
+
+	//consoley.log("euuuh"+ w+" "+ d+" "+ h+" "+ hd);
+	console.log("euuuh", w, d, h, hd);
+
 	var introVisible = true;
 	var scrollPos;
 
 	window.onscroll = function () { window.scrollTo(0, 0); };
+
 	$('#logo-container')
 		.transition({rotateY: '30deg', opacity: 0, scale: 0.8},0)
 		.transition({rotateY: '0deg', opacity: 1, scale: 1, delay: 500},1000)
@@ -17,51 +39,96 @@ jQuery(document).ready(function($){
 	function toggle3dBlock(addOrRemove) {
 
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
+		activateScroll();
 		introVisible=!addOrRemove;
-
-		console.log('introVisible= '+introVisible);
 
 		$('main').toggleClass('nav-is-visible', addOrRemove);
 		$('#home-container').toggleClass('nav-is-visible', addOrRemove);
-		
+		$('#arrow').toggleClass('nav-is-visible', addOrRemove);
+
+		//$("h1, h2, p").toggleClass("blue");
+	
+	}
+
+	function activateScroll() {
+		console.log("activateScroll..gon scroll--onTransionEnd?");
+		$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
+			function(e) {
+				window.onscroll = function () {};
+			});
 	}
 
 	//Scroll down
 	$('#home-container').on('mousewheel', function(event) {
 		if ( (event.deltaY<0)&&(introVisible==true) ){
-			console.log('GO DOWN='+event.deltaY + '|  hide='+introVisible);
 			toggle3dBlock(!$('#home-container').hasClass('nav-is-visible'));
 			
-			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
-			function(e) {
-				//alert("POUET");
-				window.onscroll = function () {};
-			});
-			$('#logo-container')
-			.transition({opacity: 0, scale: 1.1},500)
+			$('#logo-container').transition({opacity: 0, scale: 1.1},500);
 		}
 	});
 
 	//Scroll up
 	$('main').on('mousewheel', function(event) {
-		console.log('Delta='+event.deltaY);
-		console.log(window.scrollY);
+		console.log("mousewheel..onTransionEnd?",introVisible, event.deltaY,window.scrollY);
 		if ( (event.deltaY>0)&&(introVisible==false)&&(window.scrollY==0) ){
-			console.log('GO UP='+event.deltaY + '|  hide='+introVisible);
 			toggle3dBlock(!$('main').hasClass('nav-is-visible'));
 
 			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
 			function(e) {
-				//alert("PROUT");
-				window.onscroll = function () { window.scrollTo(0, 0); };
+				window.onscroll = function () { window.scrollTo(0, 0); };//TOFIX** asprolly cause of not scrolling down sometimes!!
 			});
-			$('#logo-container')
-			.transition({opacity: 1, scale: 1, delay:1000},500)
+			$('#logo-container').transition({opacity: 1, scale: 1, delay:100},500)
 
-		}
+		}//else{console.log("mousewheel..NO Scrolly");}
 	});
 
+	$('#arrow').click(function() { //dont fire in desktop..phew
+		//consoley.log("arrowCLICK");
+		console.log("arrowCLICK!!");
+		toggle3dBlock();
+	});
 	
+	//grr borks with undefined reading 'concat' error smdh--version compatibility with jquery 
+	//$(document).ready(function() {
+		/*$("#arrow").on( "vclick",function() { //also works!--BUT not in mobile smh still
+		//$(document).on( "vclick", "#arrow", function() { //works
+		  consoley.log("arrowVVedddyCLICK");
+		  console.log("arrowVdddVCLICK!!");
+		});*/
+	//});
+
+	$("#arrow").on('touchstart', function(e) { //STILL nope in android browser grrr
+	//$(document).on( "touchstart", "#arrow", function() { 
+        console.log("arrowtouchstart....!!");
+		e.preventDefault(); //dont continue with click handler above in mobile? >>yup!!
+		toggle3dBlock();
+    });
+	//$(document).ready(function() { //works for logo!! WTF?
+		//$("#logo").on('touchstart', function() {
+		$('div').on('touchstart', '#arrow',function() { //nope with section nor #home-container..works with #logo still!!
+		  console.log("logotouchyyystart....!!"); //--size issue? still no go adding css: pointer-events: all; 
+		  //COULD be overlapping with 'main' which prevents click events? 
+		  // --z-index ? >>nope!
+		  // move main down!! >> YESS!! and all the above handlers work afterwards...oestii
+		  //huh dont seem to work when jquery mobile is removed!?! --or need to be wrapped in (document).ready()? toTry** maybe
+		  });
+		//});
+	
+
+	//TOUCH TO GO
+	//$( "body" ).keypress(function( event ) { // deprecated and replaced below
+	//	if (( event.which == 32 )&&(introVisible==true)) {
+	//		toggle3dBlock(!$('#home-container').hasClass('nav-is-visible'));
+	//	}
+	//});
+	$( "body" ).on( "keypress", function(event) {
+		if (( event.which == 32 )&&(introVisible==true)) { //space-bar smh
+			toggle3dBlock(!$('#home-container').hasClass('nav-is-visible'));
+		}
+	});
+	
+
+	//////////// Pouet 01
 	$('.first-box').on('mouseover mouseout', function(){
 		toggle3dBlock01(!$('.photo').hasClass('launchRot01'));
 		launchLine(!$('#name-container').hasClass('goLine'));
@@ -69,8 +136,10 @@ jQuery(document).ready(function($){
 
 	function toggle3dBlock01(addOrRemove) {
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
-		$('.photo').toggleClass('launchRot01', addOrRemove);		
+		$('.second-box .front').toggleClass('doHide', addOrRemove);	//serieux
+		$('.photo').toggleClass('launchRot01', addOrRemove);
 	}
+
 	function launchLine(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
 		console.log('launchLine= '+addOrRemoveLine);
@@ -79,18 +148,26 @@ jQuery(document).ready(function($){
 
 	//////////// Pouet 02
 
-	$('.second-box').on('mouseover mouseout ', function(){
+	$('.second-box').on('mouseover mouseout', function(){
 		toggle3dBlock02(!$('.photo').hasClass('launchRot02'));
 		launchLine02(!$('#name-container02').hasClass('goLine'));
 	});
 
 	function toggle3dBlock02(addOrRemove) {
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
+		$('.second-box .front').removeClass('doHide');  //toggleClass('doHide', !addOrRemove);
+		$('.third-box .bottom').toggleClass('doHide', !addOrRemove); 
+
 		$('.photo').toggleClass('launchRot02', addOrRemove);
+
+		$('.first-box .front').toggleClass('doHide', addOrRemove);
+		$('.third-box .front').toggleClass('doHide', addOrRemove);
+		$('.third-box .back').toggleClass('doHide', addOrRemove);
 	}
+
 	function launchLine02(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
-		console.log('launchLine= '+addOrRemoveLine);
+		console.log('launchLine02= '+addOrRemoveLine);
 		$('#name-container02').toggleClass('goLine', addOrRemoveLine);
 
 	}
@@ -105,36 +182,170 @@ jQuery(document).ready(function($){
 		if(typeof(addOrRemove)==='undefined') addOrRemove = true;
 		$('.photo').toggleClass('launchRot03', addOrRemove);
 
+		$('.first-box .bottom').toggleClass('doHide', addOrRemove);
+		$('.second-box .bottom').toggleClass('doHide', addOrRemove);
+
 	}
 
 	function launchLine03(addOrRemoveLine) {
 		if(typeof(addOrRemoveLine)==='undefined') addOrRemoveLine = true;
-		console.log('launchLine= '+addOrRemoveLine);
+		console.log('launchLine03= '+addOrRemoveLine);
 		$('#name-container03').toggleClass('goLine', addOrRemoveLine);
 	}
 
-	$(document).on('scroll',function(){
-		if($(this).scrollTop()>= $('#photo-container').position().top){
-			// launchLine02(!$('#name-container02').hasClass('goLine'));
+	/*$(document).on('scroll',function(){
+		let p = $('#photo-container').position().top ;
+		if($(this).scrollTop()>= p){ //$('#photo-container').position().top){
+			console.log('scrolled past photo-container?',p);
 		}
-	})
+	});*/
+
+	function doReset(){
+		document.getElementById("loader").style.display = "none";
+		document.getElementById("submit").style.display = "inline-block";
+		$('#form')[0].reset(); //just in case
+	}
+	function doShowLoader(){
+		document.getElementById("loader").style.display = "inline-block";
+  		document.getElementById("submit").style.display = "none";
+	}
+
+	function clearReturn(){
+		var return_message = document.getElementById("returnmessage");
+		return_message.innerHTML = '';
+		return_message.style.backgroundColor = 'transparent';//or empty?
+	}
 
 	$('#btn').click(function() {
-       // var searchValue = $('#searchForm').val();
-	    var name = $('#name').val();
+		var name = $('#name').val();
         var email = $('#email').val();
         var object = $('#object').val();
 		var message = $('#message').val();
-        var ajaxurl = "amit.php",
-        data =  {'email': email, 'name':name, 'object':object, 'message':message };
-        $.post(ajaxurl, data);
+        var ajaxurl = "https://formspree.io/f/mrgdjwor"; //"amit.php";
+		var gotcha = document.getElementsByName("gotcha");//filtering spam so that dont reach limit(50 per month)
+
+		//console.log('click= '+email,gotcha.length,JSON.stringify(gotcha),JSON.stringify(gotcha[0]),gotcha[0].innerHTML); 
+        data =  {'email': email, 'name':name, 'object':object, 'message':message,'_gotcha': gotcha[0].innerHTML};
+        //$.post(ajaxurl, data, function(result){
+        //		$('#cava').text(result);
+		//		console.log('RESULT= '+result);
+   		// }); 
+		//the above works well...except some CORS issue--other try to solve below
+		
+		//below is like fetch smh
+		//var xhr = new XMLHttpRequest();
+		//xhr.open('POST', ajaxurl);
+		
+		//xhr.setRequestHeader('Access-Control-Allow-Origin',"http://localhost")
+		//xhr.withCredentials = true;
+		//xhr.send(data);
+		
+		//console.log('XMLHttpRequest= '+email,JSON.stringify(xhr),xhr.response);
+		
+		//var status = document.getElementById("form-status");
+		var return_message = $('#returnmessage');//.val() //without val >> an array?!?
+		//console.log('FORM_STATUS= '+email,form_status,JSON.stringify(form_status));
+		doShowLoader(); //or use progress? https://www.w3schools.com/howto/howto_js_progressbar.asp
+		$.ajax({
+			type: "POST",
+			url: ajaxurl,
+			data: data,
+			dataType: "json",
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(result){
+				//$('#cava').text(result);
+				console.log('RESULT= '+result);
+				return_message[0].innerHTML = "Thank you for your submission!";
+				return_message[0].style.backgroundColor = '#68d99c';
+				doReset();
+				setTimeout(clearReturn, 2000);
+				
+				//setTimeout(function(){
+				//	return_message[0].innerHTML = '';
+				//	return_message[0].style.backgroundColor = 'transparent'; //or empty?
+				//}, 2000)
+			},
+			error: function (xhr, status) {
+				// handle errors
+				console.log('ERROR= '+status + " ;; "+ JSON.stringify(xhr));
+				//ERROR= error ;; {"readyState":0,"status":0,"statusText":"error"}
+				if(xhr.status == 0 && xhr.readyState == 0){ //bon in testing this is a false error
+					return_message[0].innerHTML = "Thank you for your submission!";
+					return_message[0].style.backgroundColor = '#68d99c';
+					doReset();
+					alert("Sent"); //or also set innerHTML as below instead of alert?!?
+					setTimeout(clearReturn, 2000);
+					return;
+				}
+
+				return_message[0].innerHTML = "Oops! There was a problem submitting your form"; //this works...
+				return_message[0].style.backgroundColor = '#FF0000';
+				//alert("euuuh");	
+				setTimeout(clearReturn, 2000);
+				//setTimeout(function(){
+				//	return_message[0].innerHTML = '';
+				//	return_message[0].style.backgroundColor = 'transparent'; //or empty?
+				//}, 2000)
+			},
+			//headers: {  //doesnt work when this is not commented out
+			//	"accept": "application/json",
+			//	"Access-Control-Allow-Origin":"*"
+			//}
+			//dataType: 'json',
+		  })
 		
 		//assuming that the send was successful...clear the input area
-		name.value="";
-		email.value="";
-		object.value="";
-		message.value="";
+		//name.value="";
+		//email.value="";
+		//object.value="";
+		//message.value="";
+		$('#form')[0].reset(); //umm as array access!!
+
+		//var form = document.getElementById("form");var form =$('#form')//.val()
 		
+		//other try....
+		//console.log('FORM= '+email,form,JSON.stringify(form),JSON.stringify(data));
+		//this dont work? >>blocked by cors smh gotta test only online?!?
+		/*fetch(ajaxurl, { //event.target.action
+			method: "POST",//form.method,
+			body: data,
+			referrer:'',//'http://localhost:9000',//helps with cors? nope //"about:client
+			headers: {
+				'Accept': 'application/json',
+				'Access-Control-Allow-Origin':'http://localhost:9000',   //prob to submit when this here
+				'Access-Control-Allow-Credentials':true
+			}
+		  }).then(response => {
+			if (response.ok) {
+				form_status.innerHTML = "Thanks for your submission!";
+			  	form.reset()  //toSee with val() //below equivalent?
+			  	//$('#form').reset()
+			} else {
+			  response.json().then(data => {
+				console.log('BOO response= ',data,JSON.stringify(data));
+				if (Object.hasOwn(data, 'errors')) {
+					form_status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+				} else {
+					form_status.innerHTML = "Oops! There was a problem submitting your form"
+				}
+			  })
+			}
+		  }).catch(error => {
+			console.log('BOO ERROR= ',error,JSON.stringify(error));
+			form_status[0].innerHTML = "Oops! There was a problem submitting your form"; //this works...
+			form_status[0].style.backgroundColor = '#FF0000';// = "Red";
+			//form_status = "Oops!";
+			//$('#form-status')[0].value = "Oops!";
+			//form_status.val().innerHTML = "Oopszzz!";
+		  });*/
+
+		//name.value="";
+		//email.value="";
+		//object.value="";
+		//message.value="";
+		//$('#form')[0].reset(); //huh is an array...and no need for above setting to empty...
     });
 
 

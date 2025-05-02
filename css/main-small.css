@@ -37,26 +37,6 @@ section{
 	margin: 0;
 }
 
-/* #home-container{
-	height: 100vh; //umm? helps with arrow? nah prolly not
-}*/
-
-/*.home{
-	background-position:center center;
-}*/
-
-/*
-#arrow{
-	pointer-events: all; Ensure click events are registered 
-	z-index :1000; 
-}*/
-
-/* 
-#Calque_1{
-	pointer-events: all; nope click still dont fire smh >>overlapping issue smdh
-	z-index :1000;
-}*/
-
 #home-container{
 	height: 90vh;  /*/umm..toSee */
 }
@@ -455,7 +435,7 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 }
 
 /* gotta override below and put in two cols*/
-.title-services{
+.title-service{
 	text-align: center;
 	line-height: 1.6em;
 	font-family: 'Libre Baskerville', serif;

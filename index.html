@@ -33,10 +33,10 @@
       revert as adds unwanted css -->
       
       <!--<script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script> redundant... testing with below
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=init"></script> -->
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=init"></script> 
       
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w&callback=init"></script>
-
+-->
     </head>
 
     <body>
@@ -116,26 +116,32 @@
             <h1>  SERVICES </h1>
             <div id="first">
               <span></span>
-              <h2 class="title-services">Design</h2>
+              <a><h2 class="title-service">Design</h2></a>
+              <p id="info-service">
                 Art direction </br>
                 Web design</br>
                 UI/UX</br>
                 Graphic design
+              </p>
             </div>
             
             <div id="second">
               <span></span>
-              <h2 class="title-services">Development</h2>
-              Front office development</br>
-              Back office development
+              <a><h2 class="title-service">Development</h2></a>
+              <p id="info-service">
+                Frontend development</br>
+                Backend development
+              </p>
             </div>
 
             <div id="third">
               <span></span>
-              <h2 class="title-services">Consulting</h2>
-            Digital strategy</br>
-            SEO</br>
-            Community management
+              <a><h2 class="title-service">Consulting</h2></a>
+              <p id="info-service">
+                Digital strategy</br>
+                SEO</br>
+                Community management
+              </p>
             </div>  
           </section>
 
@@ -286,17 +292,8 @@
     //document.addEventListener('DOMContentLoaded',init); //using callback instead 
 
     //google.maps.event.trigger( map, 'resize' ); //helps for display on small? meh...had to set css height
-    
-
-    /*$(document).ready(function() {
-      $("#arrow").vclick(function() {
-        consoley.log("arrowVVeyCLICK");
-      console.log("arrowVVCLICK!!");
-      });
-    });*/
 
   </script>
   
-<!--<script src="js/main.js"></script>-->
-<script src="js/main-redo.js"></script>
+<script src="js/main.js"></script>
 </html>

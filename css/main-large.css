@@ -22,6 +22,7 @@ html,body{
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
+    /*scroll-behavior:smooth;  umm jittery at first*/
 }
 
 h1{
@@ -42,7 +43,7 @@ section{
 	margin:auto;
 }
 
-p, .title-services{
+p, .title-service{
 	text-align: center;
 	line-height: 1.6em;
 	font-family: 'Libre Baskerville', serif;
@@ -145,7 +146,7 @@ p, .title-services{
     text-align: center;
 }
 
-#services div{
+#services div, #info-service{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	font-size: 14px;

@@ -8,13 +8,19 @@
 }
 
 html,body{
-
 	background-color: #f2f2f2;
 	width:100vw;
 	height:100vh;
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
+	/*scroll-behavior:smooth;  umm jittery at first*/
+	/* below for not scrolling horizontally...should put in section tho? seems ok...buuut nah hides intro text smh...section below?
+	width: calc(100vw - 17px); /* Adjust the value based on scrollbar width ..bof
+	
+	width: 100%;
+  	max-width: 100vw;
+  	overflow-x: hidden;*/
 }
 
 h1{
@@ -31,11 +37,11 @@ h2{
 }
 
 section{
-	width: 1160px;
+	width: 1160px;/*;this cause of horizontal scroll?*/
 	margin: auto;
 }
 
-p, .title-services{
+p, .title-service{
 	text-align: center;
 	line-height: 1.6em;
 	font-family: 'Libre Baskerville', serif;
@@ -487,7 +493,7 @@ main.nav-is-visible{
     text-align: center;
 }
 
-#services div{
+#services div, #info-service{ /*  smh */
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	font-size: 0.875em;/*14px; */
@@ -533,6 +539,16 @@ main.nav-is-visible{
 
 #third span{
 	background: url("../pm.svg") no-repeat center;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover { /*.title-services */
+	color: red;
+	background-color: transparent;
+	text-decoration: underline;
 }
 
 #contact{
@@ -592,10 +608,6 @@ input:focus, textarea:focus{
 	font-weight: 300;
 }
 
-a{
-	text-decoration: none;
-}
-
 #btn{
 	position: relative;
 	width: 100px;
@@ -631,6 +643,22 @@ a{
 .gotcha{
 	display:none;
 }
+
+.doHide{
+	opacity: 1;
+	-webkit-transform:translateY( -10px );
+	-webkit-font-smoothing: antialiased; /* umm? >> height 0.25s 0.75s,  width 0.5s, opacity 0.5s, */
+    -ms-transform:translateY( -10px );
+        transform:translateY( -10px );
+	-webkit-transition: opacity 0.25s, -webkit-transform 0.5s;
+	        transition: opacity 0.25s, transform 0.5s;
+	display:none;
+}
+
+/*.doShow{
+	display:inline-block;
+	
+}*/
 
 .draw{
 	position: absolute;
