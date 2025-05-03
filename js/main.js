@@ -284,7 +284,7 @@ jQuery(document).ready(function($){
 		deltaY =  $(window).scrollTop() - lastKnownScrollPosition; 
 		lastKnownScrollPosition = $(window).scrollTop();
 		
-		console.log("main::Pointer!!",oldy,"deltaY="+ deltaY+" recTop="+rec.top,$(window).scrollTop(),event.clientY);//,event.originalEvent.defaultPrevented, event.target); //window.scrollY == $(window).scrollTop()
+		//console.log("main::Pointer!!",oldy,"deltaY="+ deltaY+" recTop="+rec.top,$(window).scrollTop(),event.clientY);//,event.originalEvent.defaultPrevented, event.target); //window.scrollY == $(window).scrollTop()
 		
 		//"scTop="+this.scrollTop || $('main').scrollTop()  >> always == 0 and different than window.scrollTop() 
 		//"scrollHeight="+ this.scrollHeight,"clientHeight="+this.clientHeight, >>remain the same
@@ -394,13 +394,13 @@ jQuery(document).ready(function($){
 		}
 	);
 
-	$("#first, #second, #third").on('click', function() { //e>>huh no need
+	$("#first, #second, #third").on('click', function(e) { 
 		//$("#first, #second, #third").toggleClass('doHide'); //
 		//e.currentTarget.classList.toggle("doHide"); //works but hides whole thing
 		//console.log(`cliiick:`,e.currentTarget,e.currentTarget.classList, e.target,e.target.classList); // nope >> e.currentTarget.hasClass("doHide") ,e.target.hasClass("doHide"));
 		//console.log(`cliiick:`);
 		//umm what about leave?!? >>meh user gotta explicitely click to hide
-		//$(this).children('p').toggleClass("doHide"); //hmm too fast... below way better!
+		//$(this).children('p').toggleClass("doHide"); //hmm too fast... animate() below way better!
 
 		/*$(this).children('p').animate({ //...umm prob with unhide? huh no need!
 			opacity: "toggle", //0.25,
@@ -410,6 +410,22 @@ jQuery(document).ready(function($){
 			// Animation complete.
 			//console.log(`cliiick:done`);
 		});*/
+
+		////should not toggle when clicking on text
+		//let displayed = $(this).children('p').css( "display" ); //equivalent >> $(this).children('.info-service').css( "display" );
+		//let length = $(this).children('.info-service').length;
+		let isHidden = $(this).children('.info-service').is(function() {
+			//return $( "strong", this ).length === 2; 
+			return $(this).css("display") == "none";//child within >> neat as eval in one go!
+		  });
+		  
+		//e.target is more specific than e.currentTarget which is parent...
+		//.tagName == .nodeName  >> huh
+		if (!isHidden && e.target.tagName == "P") {
+			//console.log(`cliiick`,isHidden, e.target.nodeName);
+			return;
+		}
+		
 
 		$(this).children('p').slideToggle(500, function() { //huh much better than above
 		// ..could also use .toggle() or .slideDown || .slideUp  ? toTry maybe

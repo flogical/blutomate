@@ -26,16 +26,16 @@ html,body{
 
 h1{
 	text-align: center;
-	margin-bottom: 70px ; /*; 4.375em*/
+	/* too much space...margin-bottom: 70px;  4.375em*/
 	font-family: 'Passion One', cursive;
 	font-size: 2.25rem; /*font-size:  36px; */
 	letter-spacing: 0.2em;
 	color: #1a1a1a;
 }
 
-h2{
+/*h2{ meeh too much space
 	margin-bottom: 30px;
-}
+}*/
 
 section{
 	width: 100% ;/*;1160px  huh cause of horizontal scroll*/
@@ -243,12 +243,12 @@ main.nav-is-visible{
 #about{
  /*background: blue;1000px  */
 	width: 100%;
-	height:900px;
+	height:100%;  /*900px cause too much space...better % or auto?*/
 }
 
 
 #photo-container{
-	margin: 10% auto 0 auto; /*100px */
+	margin: 4% auto 0 auto;
 	width: 100%; /*1000px */
 	height: 600px;
 }
@@ -489,12 +489,13 @@ main.nav-is-visible{
 }
 
 #services{
-    height:460px;
-    width: 900px; /*in % ? todo */
+    /*height:460px; too much space margin-bottom prolly? */
+	margin-bottom: 20em;
+    width: 90%; /*900px */
     text-align: center;
 }
 
-#services div, #info-service{ /*  smh */
+#services div, .info-service{
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 	font-size: 0.875em;/*14px; */
@@ -503,17 +504,21 @@ main.nav-is-visible{
 	color: #1a1a1a;
 }
 
+.info-service{/* override font-size and font-style above smh */
+	font-size: 1rem;
+	font-style: normal;
+}
+
 #services span{
 	display: inline-block;
-	margin-bottom: 25px;
+	/*margin-bottom: 25px; too much space.. */
 	height: 65px;
 	width: 100%;
 }
 
-#first, #second, #third  {
-	width: 300px; /*in % ? todo */
+#first, #second,#third {
+	width: 30%; /* 300px in % ? todo */
 	height: 100px;	
-		
 	float: left;
 }
 
@@ -525,10 +530,14 @@ main.nav-is-visible{
 	float: left;
 }
 
-#third{
-	width: 300px;
+#third{ toFix at mobile 800px smh
+	width: 300px; 
 	height: 100px;
-	float: left;
+	float: left;	
+	clear: left;
+	p.clear {
+		clear: left;
+	}
 }*/
 
 #first span{
@@ -559,7 +568,7 @@ a:hover { /*.title-services */
 }
 
 #form {
-	width: 860px; /*in % ? todo */
+	width: 83%; /*860px; in % ? todo */
 	margin:auto;	
 }
 
@@ -592,9 +601,18 @@ input:focus, textarea:focus{
 	margin-left: 50px;
 }
 
+@media screen and (min-width: 768px) and (max-width: 1000px) {
+	#email {
+		margin-left: 0; 
+	}
+	#services{
+		width:100%;
+	}
+}
+
 #message{
 	resize:none;
-	width: 860px; /*in % ? todo */
+	width: 83%; /*860px; in % ? todo */
 	height: 200px;
 }
 
@@ -632,6 +650,7 @@ input:focus, textarea:focus{
 	-webkit-animation: spin 2s linear infinite;
 	animation: spin 2s linear infinite;
 }
+
 @-webkit-keyframes spin {
 	0% { -webkit-transform: rotate(0deg); }
 	100% { -webkit-transform: rotate(360deg); }
@@ -646,7 +665,7 @@ input:focus, textarea:focus{
 	display:none;
 }
 
-.doHide{
+.doHidey{ /* my bad.. */
 	opacity: 1;
 	-webkit-transform:translateY( -10px );
 	-webkit-font-smoothing: antialiased; /* umm? >> height 0.25s 0.75s,  width 0.5s, opacity 0.5s, */
@@ -657,10 +676,9 @@ input:focus, textarea:focus{
 	display:none;
 }
 
-/*.doShow{
-	display:inline-block;
-	
-}*/
+.doHide{
+	display:none;
+}
 
 .draw{
 	position: absolute;
@@ -715,17 +733,18 @@ input:focus, textarea:focus{
 	width:100%;
 }
 
-    .gm-style-iw * {
-        display: block;
-        width: 100%;
-    }
-    .gm-style-iw h4, .gm-style-iw p {
-        margin: 0;
-        padding: 0;
-    }
-    .gm-style-iw a {
-        color: #4272db;
-    }
+/* umm below? */
+.gm-style-iw * {
+    display: block;
+    width: 100%;
+}
+.gm-style-iw h4, .gm-style-iw p {
+    margin: 0;
+    padding: 0;
+}
+.gm-style-iw a {
+    color: #4272db;
+}
 
 .gmnoprint, .gm-style-cc{
 	display: none;

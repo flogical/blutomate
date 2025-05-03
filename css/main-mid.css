@@ -108,7 +108,7 @@ main.nav-is-visible{
 }
 
 .first-box .front, .second-box .bottom, .third-box .back{
-    background-image: url("../img/resized/photo01.jpg"); /* url("../img/cropped/photo01.jpg"); */
+    background-image: url("../img/resized/photo01.jpg");
 }
 
 .first-box .bottom, .second-box .front, .third-box .bottom{
@@ -304,7 +304,7 @@ main.nav-is-visible{
 }
 
 #services{
-    height: 70vh; /* 460px; */
+    height: 70vh; /*toReview if not too much space and use margin-bottom? */
     width: 100vw;
     margin: auto;
     margin-top: 3.625em;
@@ -321,31 +321,28 @@ main.nav-is-visible{
 
 #services span{
 	display: inline-block;
-	margin-bottom: 1.26rem; /* 25px; */
+	/* margin-bottom: 1.26rem;  too much space*/
 	height: 4.06rem; /* 65px; */
 	width: 100%;
 }
 
-#first{
+#first, #second, #third{
 	width: 18.75rem; /* or 33.3%?  300px; */
-	height: auto;	/* 100px;*/
-		
+	height: auto;	/* 100px;*/	
 	float: left;
 }
 
-#second{
-	width: 18.75rem; /* or 33.3%?  300px; */
-	height: auto;	/* 100px;*/
-	
+/*#second{
+	width: 18.75rem; 
+	height: auto;	
 	float: left;
 }
-
 
 #third{
-	width: 18.75rem; /* or 33.3%?  300px; */
-	height: auto;	/* 100px;*/
+	width: 18.75rem; 
+	height: auto;
 	float: left;
-}
+}*/
 
 /* gotta override below and put in two cols*/
 .title-service{

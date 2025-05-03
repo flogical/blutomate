@@ -78,7 +78,7 @@ main.nav-is-visible{
 
 #photo-container{
 	margin: 11% auto 0 auto;
-	width: 105vw; /* just fill width */
+	width: 100%;
     height:auto; 
     /*height:max(600px, calc(75vh / 3))auto; auto seems to work but no margin :(...have to be set or uses main.css* 
 	/*height: 75vh; 75% prolly cant use % as no height in parent? ... 600px;
@@ -340,26 +340,6 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	        transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, transform 0.5s 0.25s;
 }
 
-/*
-.name-about, .title{
-	text-align: center;
-	display: block;
-}*/
-
-/*
-.name-about{
-	font-family: 'Libre Baskerville', serif;
-	font-style: italic;
-	font-size: 2.25em;	/*36px; 
-	opacity: 0;
-	color: #fff;
-	-webkit-transform:translateY( 0px );
-		    -ms-transform:translateY( 0px );
-		        transform:translateY( 0px );
-	-webkit-transition: opacity 0.25s, -webkit-transform 0.25s;
-	        transition: opacity 0.25s, transform 0.25s;
-}
-*/
 
 .title{
 	font-family: 'Open Sans', sans-serif;
@@ -392,7 +372,7 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 }
 
 #services{ /*make in two columns? */
-    height: 70vh;  /*460px; seems needed */
+    height: 70vh;  /*toReview if not too much space and use margin-bottom? */
     width: 100vw;
     margin: auto;
     margin-top: 3.625em;
@@ -409,30 +389,28 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 
 #services span{
 	display: inline-block;
-	margin-bottom: 1.26rem; /* 25px; */
-	height: 4.06rem; /* 65px; */
+	/*margin-bottom: 1.26rem; also too much space 
+	height: 4.06rem; */
 	width: 100%;
 }
 
-#first{
+#first, #second, #third{
 	width: 18.75rem; /* or 33.3%?  300px; */
 	height: auto;	/* 100px;*/
-		
 	float: left;
 }
 
-#second{
-	width: 18.75rem; /* or 33.3%?  300px; */
-	height: auto;	/* 100px;*/
-	
+/*#second{
+	width: 18.75rem; 
+	height: auto;
 	float: left;
 }
 
 #third{
-	width: 18.75rem; /* or 33.3%?  300px; */
-	height: auto;	/* 100px;*/
+	width: 18.75rem; 
+	height: auto;
 	float: left;
-}
+}*/
 
 /* gotta override below and put in two cols*/
 .title-service{
@@ -458,6 +436,10 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 
 #email {
 	margin-left: 0;
+}
+
+#name,#email,#object{
+	width: 100%;
 }
 
 #message{
