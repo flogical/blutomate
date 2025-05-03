@@ -172,15 +172,15 @@ jQuery(document).ready(function($){
 			lastKnownScrollPosition = event.clientY ;
 			return;
 		}
-		//avoid start on desktop
+		//avoid toggle on desktop
 		if ('pointermove' == event.type && event.pointerType == 'mouse') {
-			console.log("home-container >>>DOWNing::NOPE mouse");
+			//console.log("home-container >>>DOWNing::NOPE mouse");
 			return; 
 		}
 
 		let i = isAtEnd(this);
 		let visible = $('#home-container').hasClass('nav-is-visible');
-		console.log("home-container >>>DOWNing", i , event.type,event.pointerType, event.clientY,event.pageY); 
+		console.log("home-container >>>DOWNing", i , event.type,event.pointerType) //, event.clientY === event.pageY); 
 		//sometimes doesnt get saved?!? >>OH 'pointercancel' event.clientY == 0 --toFix**
 		if (introVisible && i){ //adding i though prolly redundant?
 			toggle3dLanding(!visible);
@@ -251,8 +251,7 @@ jQuery(document).ready(function($){
 			return; //bon stops one click at least
 		}
 
-		//check if lastKnownScrollPosition has changed 'fore continue to prevent second click doing stuff...
-		// --toReview**
+		//check if lastKnownScrollPosition has changed 'fore continue to prevent second click doing stuff...meh
 		//if (lastKnownScrollPosition == event.clientY){ //add window.scrollY too? toSee**
 		//	console.log("main >>>UPsss>>NOCHANGE!!!", event.type, lastKnownScrollPosition,window.scrollY);
 		//	return
@@ -275,7 +274,7 @@ jQuery(document).ready(function($){
 		let visible = $('main').hasClass('nav-is-visible');
 
 		//let a = $("main")[0].getBoundingClientRect();
-		let b = this.getBoundingClientRect(); //equivalent to above
+		let rec = this.getBoundingClientRect(); //equivalent to above
 		//let offy = this.offset().top; //nope dont exist?!? >>below works tho...cause grabbing section?>>OH prolly cause using 'this' (works otherwise!!)
 		//let elementTop = $('#about').offset().top;
 		//printy('#about');
@@ -285,9 +284,9 @@ jQuery(document).ready(function($){
 		deltaY =  $(window).scrollTop() - lastKnownScrollPosition; 
 		lastKnownScrollPosition = $(window).scrollTop();
 		
-		console.log("main::GOINnnn UP!! ",oldy, deltaY,$('main').scrollTop(),b.top,$(window).scrollTop(),event.clientY);//,event.originalEvent.defaultPrevented, event.target); //window.scrollY == $(window).scrollTop()
+		console.log("main::Pointer!!",oldy,"deltaY="+ deltaY+" recTop="+rec.top,$(window).scrollTop(),event.clientY);//,event.originalEvent.defaultPrevented, event.target); //window.scrollY == $(window).scrollTop()
 		
-		//"scTop="+this.scrollTop, always 0...or only for window? >>seems so
+		//"scTop="+this.scrollTop || $('main').scrollTop()  >> always == 0 and different than window.scrollTop() 
 		//"scrollHeight="+ this.scrollHeight,"clientHeight="+this.clientHeight, >>remain the same
 
 		//window.scrollY==0 >>def needed or can jump when later down page...also deltaY >= 0 as calculates to 0 
@@ -361,7 +360,7 @@ jQuery(document).ready(function($){
 		});
 	}
 
-	//Setup listener for each image block
+	//Setup listener for each block
 	handleImageEvent( //Pouet 01
 		'.first-box',
 		'launchRot01',

@@ -9,7 +9,8 @@
 
 html,body{
 	background-color: #f2f2f2;
-	width:100vw;
+	width: 100%;
+  	max-width: 100vw;
 	height:100vh;
 	margin: 0;
 	padding: 0;
@@ -37,7 +38,7 @@ h2{
 }
 
 section{
-	width: 1160px;/*;this cause of horizontal scroll?*/
+	width: 100% ;/*;1160px  huh cause of horizontal scroll*/
 	margin: auto;
 }
 
@@ -140,7 +141,7 @@ p, .title-service{
 	width:130px;
 	height: 80px;
 	margin: 25px auto 25px auto;
-	background: url("../img/logo.svg") no-repeat;
+	background: url("../assets/logo.svg") no-repeat;
 }
 
 #logo-container span{
@@ -167,7 +168,7 @@ p, .title-service{
 	bottom: 20px;
 	display: block;
 	cursor: pointer;
-	background: url("../img/arrow.svg") no-repeat;
+	background: url("../assets/arrow.svg") no-repeat;
 	opacity: 1;
 	-webkit-transition:opacity 0.5s,2s ease-in-out;
 
@@ -240,20 +241,20 @@ main.nav-is-visible{
 
 
 #about{
- /*background: blue;  */
-	width: 1000px;
+ /*background: blue;1000px  */
+	width: 100%;
 	height:900px;
 }
 
 
 #photo-container{
-	margin: 100px auto 0 auto;
-	width: 1000px;
+	margin: 10% auto 0 auto; /*100px */
+	width: 100%; /*1000px */
 	height: 600px;
 }
 
 .photo{
- 	width: 1000px;
+ 	width: 100%; /*1000px */
 	height: 180px;
 	margin-bottom: 5px;
 	position: relative;
@@ -284,7 +285,7 @@ main.nav-is-visible{
 }
 
 .first-box figure, .second-box figure, .third-box figure{
- 	width: 1000px;
+ 	width: 100%; /*1000px */
 	height: 180px;
  	margin: 0px;
 	display: block;
@@ -392,7 +393,7 @@ main.nav-is-visible{
 	pointer-events: none;
 	margin: auto;
 	margin-top:-100px;
-	width: 1000px;
+	width: 100%; /*1000px */
 	height: 150px;
 }
 
@@ -417,7 +418,7 @@ main.nav-is-visible{
 .lineL, .lineR{
 	position: absolute;
 	height: 1px;
-	width:200px;
+	width:200px;/*in % ? todo */
 	background-color: #fff;
 	opacity: 0;
 	-webkit-transition: height 0.25s, width 0.5s 0.25s, opacity 0.25s 0.25s,-webkit-transform 0.5s 0.25s;
@@ -433,7 +434,7 @@ main.nav-is-visible{
         transform:scale(0.15,1);
 	opacity: 1;
 
-	width:550px;
+	width:550px; /*in % ? todo 55% */
 	height:10px;
 	-webkit-transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, -webkit-transform 0.5s 0.25s;
 	        transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, transform 0.5s 0.25s;
@@ -489,7 +490,7 @@ main.nav-is-visible{
 
 #services{
     height:460px;
-    width: 900px;
+    width: 900px; /*in % ? todo */
     text-align: center;
 }
 
@@ -509,13 +510,14 @@ main.nav-is-visible{
 	width: 100%;
 }
 
-#first{
-	width: 300px;
+#first, #second, #third  {
+	width: 300px; /*in % ? todo */
 	height: 100px;	
 		
 	float: left;
 }
 
+/*
 #second{
 	width: 300px;
 	height: 100px;	
@@ -527,18 +529,18 @@ main.nav-is-visible{
 	width: 300px;
 	height: 100px;
 	float: left;
-}
+}*/
 
 #first span{
-	background: url("../design.svg") no-repeat center;
+	background: url("../assets/design.svg") no-repeat center;
 }
 
 #second span{
-	background: url("../dev.svg") no-repeat center;
+	background: url("../assets/dev.svg") no-repeat center;
 }
 
 #third span{
-	background: url("../pm.svg") no-repeat center;
+	background: url("../assets/pm.svg") no-repeat center;
 }
 
 a{
@@ -557,7 +559,7 @@ a:hover { /*.title-services */
 }
 
 #form {
-	width: 860px;
+	width: 860px; /*in % ? todo */
 	margin:auto;	
 }
 
@@ -582,7 +584,7 @@ input:focus, textarea:focus{
 }
 
 #name,#email,#object{
-	width: 380px;
+	width: 380px; /*in % ? todo */
 	height: 40px;
 }
 
@@ -592,7 +594,7 @@ input:focus, textarea:focus{
 
 #message{
 	resize:none;
-	width: 860px;
+	width: 860px; /*in % ? todo */
 	height: 200px;
 }
 
@@ -600,7 +602,7 @@ input:focus, textarea:focus{
     background-color: transparent;
     margin-top: 12px;
     border: none;
-    width: 100px;
+    width: 100px; /*in % ? todo */
     color: #262626;
     font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
@@ -610,7 +612,7 @@ input:focus, textarea:focus{
 
 #btn{
 	position: relative;
-	width: 100px;
+	width: 100px; /*in % ? todo */
 	height: 50px;
 	margin: auto;
 	cursor:pointer;
@@ -621,7 +623,7 @@ input:focus, textarea:focus{
 	left: 50%;
 	top: 50%;
 	z-index: 1;
-	width: 120px;
+	width: 120px; /*in % ? todo */
 	height: 120px;
 	margin: -76px 0 0 -76px;
 	border: 16px solid #f3f3f3;
@@ -691,7 +693,7 @@ input:focus, textarea:focus{
 	top: -25px;
 	z-index: 1000;
 	background-color: #16161f;
-	width: 255px;
+	width: 255px; /*in % ? todo */
 	height: 93px;
 	text-align: center;
 }
