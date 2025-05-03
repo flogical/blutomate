@@ -33,10 +33,6 @@ h1{
 	color: #1a1a1a;
 }
 
-/*h2{ meeh too much space
-	margin-bottom: 30px;
-}*/
-
 section{
 	width: 100% ;/*;1160px  huh cause of horizontal scroll*/
 	margin: auto;
@@ -242,8 +238,8 @@ main.nav-is-visible{
 
 #about{
  /*background: blue;1000px  */
-	width: 100%;
-	height:100%;  /*900px cause too much space...better % or auto?*/
+	width: 90%;
+	height:100%;
 }
 
 
@@ -294,21 +290,29 @@ main.nav-is-visible{
 
 .first-box .front, .second-box .bottom, .third-box .back{
 	background-image: url("../img/photo01.jpg");
+	/*background-repeat: no-repeat; umm needed?*/
 }
 
 .first-box .bottom, .second-box .front, .third-box .bottom{
 	background-image: url("../img/photo02.jpg");
+	/*background-repeat: no-repeat; umm needed?*/
 }
 
 .first-box .back, .second-box .back, .third-box .front{
 	background-image: url("../img/photo03.jpg");
+	/*background-repeat: no-repeat; umm needed?*/
+}
+
+.first-box figure{	
+	background-position: center 0px; /* prolly*/
 }
 
 .second-box figure{	
-	background-position: 0 -180px;
+	background-position: center -180px;
 }
+
 .third-box figure{	
-	background-position: 0 -360px;
+	background-position: center -360px;
 }
 
 .front  {
@@ -336,34 +340,6 @@ main.nav-is-visible{
 	-webkit-transform:  rotateX(-90deg) translateZ(90px);
 	        transform:  rotateX(-90deg) translateZ(90px); 
 }
-
-/* no anim needed?
-.anim .first-box{
-	-webkit-transform:  rotateX(45deg) translateY( 0px );
-        transform:  rotateX(45deg) translateY( 0px );
-
-	-webkit-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	        transform-origin: center center;
-}
-
-.anim .second-box{
-	-webkit-transform:  rotateX(135deg) translateZ( 0px );
-        transform:  rotateX(135deg) translateZ( 0px );
-
-	-webkit-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	        transform-origin: center center;
-}
-
-.anim .third-box{
-	-webkit-transform:  rotateX(135deg) translateZ( 0px );
-        transform:  rotateX(135deg) translateZ( 0px );
-
-	-webkit-transform-origin: center center;
-	    -ms-transform-origin: center center;
-	        transform-origin: center center;
-}*/
 
 
 .launchRot01 .second-box, .launchRot02 .third-box, .launchRot02 .first-box{
@@ -393,7 +369,8 @@ main.nav-is-visible{
 	pointer-events: none;
 	margin: auto;
 	margin-top:-100px;
-	width: 100%; /*1000px */
+	/*width: 100%; 1000px smh horizontal scroll*/
+	width: inherit; /* better smh */
 	height: 150px;
 }
 
@@ -491,7 +468,7 @@ main.nav-is-visible{
 #services{
     /*height:460px; too much space margin-bottom prolly? */
 	margin-bottom: 20em;
-    width: 90%; /*900px */
+    width: 80%; /*900px */
     text-align: center;
 }
 
@@ -516,29 +493,20 @@ main.nav-is-visible{
 	width: 100%;
 }
 
-#first, #second,#third {
+#first, #second, #third {
 	width: 30%; /* 300px in % ? todo */
 	height: 100px;	
 	float: left;
 }
 
-/*
-#second{
-	width: 300px;
-	height: 100px;	
-	
-	float: left;
-}
-
-#third{ toFix at mobile 800px smh
-	width: 300px; 
-	height: 100px;
-	float: left;	
-	clear: left;
-	p.clear {
-		clear: left;
-	}
+/*test for 2 columns not bad but would need remove above #first, #second, #third 
+and ugly space too...meh toVisit if have more services
+.service {  
+	//nah column-width: 18.75rem; 
+	column-count: 2;
+    column-gap: 1em;
 }*/
+
 
 #first span{
 	background: url("../assets/design.svg") no-repeat center;
@@ -563,7 +531,7 @@ a:hover { /*.title-services */
 }
 
 #contact{
-	width: 100%;
+	/*width: 80%; */
     height:567px;
 }
 
@@ -601,6 +569,7 @@ input:focus, textarea:focus{
 	margin-left: 50px;
 }
 
+
 @media screen and (min-width: 768px) and (max-width: 1000px) {
 	#email {
 		margin-left: 0; 
@@ -612,7 +581,7 @@ input:focus, textarea:focus{
 
 #message{
 	resize:none;
-	width: 83%; /*860px; in % ? todo */
+	width: 100%; /*860px; in % ? todo */
 	height: 200px;
 }
 
@@ -701,7 +670,7 @@ input:focus, textarea:focus{
 
 #map-container{
 	position: relative;
-	margin-top: 105px;
+	/*margin-top: 105px; too much space...*/
 }
 
 #adress-container{

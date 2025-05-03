@@ -312,8 +312,9 @@ jQuery(document).ready(function($){
 	// Launch line function
 	function launchLine(addOrRemove, lineSelector, lineClass) {
 		if (typeof addOrRemove === 'undefined') addOrRemove = true;
-		//console.log(`launchLine: ${addOrRemove}`);
+		//console.log(`launchLine: ${addOrRemove}`, lineSelector, lineClass);
 		$(lineSelector).toggleClass(lineClass, addOrRemove);
+		//debugger; //huh helpful
 	}
 
 	// Toggle image block function

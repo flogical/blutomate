@@ -331,20 +331,14 @@ main.nav-is-visible{
 	height: auto;	/* 100px;*/	
 	float: left;
 }
+/* test for 2 columns..not bad..ugly space tho 
+.service {
+	//column-width: 18.75rem;
+	column-count: 2;
+    column-gap: 1em;
+} */
+ 
 
-/*#second{
-	width: 18.75rem; 
-	height: auto;	
-	float: left;
-}
-
-#third{
-	width: 18.75rem; 
-	height: auto;
-	float: left;
-}*/
-
-/* gotta override below and put in two cols*/
 .title-service{
 	text-align: center;
 	line-height: 1.6em;
@@ -355,10 +349,10 @@ main.nav-is-visible{
 }
 
 #contact{
-	width: 90vw;
+	width: 80%; /*90vw */
     height: auto;
     margin:0 auto;
-    margin-top: 5.625em; 
+    /*margin-top: 5.625em; */
 }
 
 #form{
@@ -371,7 +365,6 @@ main.nav-is-visible{
 }
 
 #message{
-    width: 90%; /*90%90vw 860px; */
 	height: 12.5em;/*200px; */
 }
 

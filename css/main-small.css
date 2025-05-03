@@ -371,7 +371,7 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	        transition: opacity 0.25s, transform 0.5s;
 }
 
-#services{ /*make in two columns? */
+#services{ 
     height: 70vh;  /*toReview if not too much space and use margin-bottom? */
     width: 100vw;
     margin: auto;
@@ -423,7 +423,7 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 }
 
 #contact{
-	width: 90vw;
+	width: 80%; /*90vw */
     height: auto; /*  70vh*/
     margin:0 auto;
     /*margin-top: 5.625em; */

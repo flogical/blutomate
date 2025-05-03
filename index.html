@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="utf-8">
@@ -24,8 +24,6 @@
       <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> ...compatible with jQuery mobile below-->
       <script src="js/jquery.transit.min.js"></script>
       <script src="js/in-view.min.js"></script>
-      <!--<script src="js/lib/jquery.waypoints.min.js"></script> test using cdn below-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"></script>
       
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.12/jquery.mousewheel.js"></script>
       <!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> <!--yup needed for mobile touch 
@@ -33,10 +31,10 @@
       revert as adds unwanted css -->
       
       <!--<script src='https://maps.googleapis.com/maps/api/js?sensor=false&extension=.js'></script> redundant... testing with below
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=init"></script> -->
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=init"></script> 
       
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAV_HUmzhBe322sFwmpeATYsttef8XD3w&callback=init"></script>
-
+-->
     </head>
 
     <body>
@@ -85,7 +83,7 @@
             </div>
           </div>
 
-          <div id="name-container">
+          <div id="name-container"><!-- should prolly be class-->
             <div class="name-about">Salim</div>
             <div class="line-container">
               <div class="lineL"></div>
@@ -113,7 +111,7 @@
 
         <section id="services">
           <h1> SERVICES </h1>
-          <div id="first">
+          <div id="first" class="service">
             <span></span>
             <a><h2 class="title-service">Design</h2></a>
             <p class="info-service">
@@ -124,7 +122,7 @@
             </p>
           </div>
             
-          <div id="second">
+          <div id="second" class="service">
             <span></span>
             <a><h2 class="title-service">Development</h2></a>
             <p class="info-service">
@@ -133,7 +131,7 @@
             </p>
           </div>
 
-          <div id="third">
+          <div id="third" class="service">
             <span></span>
             <a><h2 class="title-service">Consulting</h2></a>
             <p class="info-service">
@@ -182,32 +180,32 @@
       </footer>
 
     </body>
-    <script> 
-    //google.maps.event.addDomListener(window, 'load', init); //deprecated
+    <script>
+      //google.maps.event.addDomListener(window, 'load', init); //deprecated
     
-    let map;
-    async function init() {
+      let map;
+      async function init() {
         var mapOptions = {
-            center: new google.maps.LatLng(43.676506,-79.3980204),//43.665612,-79.456295),//43.676506583307656, -79.39802047405128
-            zoom: 15,
-            zoomControl: true, //false,
-            keyboardShortcuts: false,
-            noClear: true,
-            disableDoubleClickZoom: false,
-            mapTypeControl: false,
-            scaleControl: false,
-            scrollwheel: false,
-            panControl: false,
-            streetViewControl: false,
-            draggable : true, //false,
-            overviewMapControl: false,
-            overviewMapControlOptions: {
-                opened: false,
-            },
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapId: "BLU_MAP_ID", //needed for the markers smh
-            styles: [ { "featureType": "road", "elementType": "labels.text.fill", 
-            "stylers": [ { "color": "#6cc7e5" } ] },
+          center: new google.maps.LatLng(43.676506,-79.3980204),
+          zoom: 15,
+          zoomControl: true, //false,
+          keyboardShortcuts: false,
+          noClear: true,
+          disableDoubleClickZoom: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          scrollwheel: false,
+          panControl: false,
+          streetViewControl: false,
+          draggable : true, 
+          overviewMapControl: false,
+          overviewMapControlOptions: {
+              opened: false,
+          },
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapId: "BLU_MAP_ID",
+          styles: [
+            { "featureType": "road", "elementType": "labels.text.fill", "stylers": [ { "color": "#6cc7e5" } ] },
             { "featureType": "landscape", "elementType": "geometry.fill", "stylers": [ { "color": "#08394b" } ] },
             { "featureType": "road", "elementType": "labels.text.stroke", "stylers": [ { "color": "#071d26" } ] },
             { "featureType": "road", "elementType": "geometry.fill", "stylers": [ { "color": "#071d26" } ] },
@@ -218,7 +216,7 @@
             { "featureType": "transit", "elementType": "labels", "stylers": [ { "visibility": "off" } ] },
             { "featureType": "transit", "elementType": "geometry", "stylers": [ { "color": "#085776" } ] },
             { "featureType": "water", "stylers": [ { "color": "#08536f" } ] } 
-            ],
+          ]
         }
 
         var mapElement = document.getElementById('map');
@@ -242,26 +240,9 @@
             email: email,
             web: web
           });
+
           link = '';     
         }
-
-        //umm should be out of for loop? >> empty icon '' to show marker
-        /*markery = new google.maps.Marker({ //Marker gon be deprecated
-            icon: '',
-            position: new google.maps.LatLng(43.676506,-79.3980204),
-            map: map,
-            title: 'Bluu',//locations[i][0],
-            desc: '',//description,
-            tel: '',//telephone,
-            email: '',//email,
-            web: '',//web
-          });*/
-
-        /*const markerz = new google.maps.marker.AdvancedMarkerElement({ //doesnt render..have to import library below smh...
-          map,
-          position: new google.maps.LatLng(43.676506,-79.3980204),
-          //position: {lat: 43.676506, lng: -79.3980204},
-        });*/
 
         async function loadLibrary(){
           return await google.maps.importLibrary("marker");
@@ -276,22 +257,11 @@
           });
         });
       }
+      
+      //document.addEventListener('DOMContentLoaded',init); //using callback instead 
 
+      //google.maps.event.trigger( map, 'resize' ); //helps for display on small? meh...had to set css height
 
-    //test..toRemove as fires late anyway
-    var waypoint = new Waypoint({ //new Waypoint.Inview({
-      element: document.getElementById('arrow'), // $('#arrow')[0],
-      handler: function(direction) {
-        //alert('You have scrolled to a thing')
-        //console.log('scrolled to arrow= '+direction);
-      }
-    });
-
-    //document.addEventListener('DOMContentLoaded',init); //using callback instead 
-
-    //google.maps.event.trigger( map, 'resize' ); //helps for display on small? meh...had to set css height
-
-  </script>
-  
-<script src="js/main.js"></script>
-</html>
+    </script>
+    <script src="js/main.js"></script>
+  </html>
