@@ -290,21 +290,21 @@ main.nav-is-visible{
 
 .first-box .front, .second-box .bottom, .third-box .back{
 	background-image: url("../img/photo01.jpg");
-	/*background-repeat: no-repeat; umm needed?*/
+	/*background-repeat: no-repeat; */
 }
 
 .first-box .bottom, .second-box .front, .third-box .bottom{
 	background-image: url("../img/photo02.jpg");
-	/*background-repeat: no-repeat; umm needed?*/
+	/*background-repeat: no-repeat; */
 }
 
 .first-box .back, .second-box .back, .third-box .front{
 	background-image: url("../img/photo03.jpg");
-	/*background-repeat: no-repeat; umm needed?*/
+	/*background-repeat: no-repeat; >> redundant */
 }
 
 .first-box figure{	
-	background-position: center 0px; /* prolly*/
+	background-position: center 0px;
 }
 
 .second-box figure{	

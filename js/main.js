@@ -27,12 +27,6 @@ jQuery(document).ready(function($){
 		//e.stopPropagation(); //also needed?!? >>bof dont seem so...
 		return false;
 	});
-	
-	let w = $( window ).width();
-	//let iw = $( window ).innerWidth(); //huh works with jquery == w above BUT window.innerWidth == d below...huh?
-	let d = $( document ).width();//huh larger than window?!? >> 'document' could extend far beyond 'window'
-	let h = $( window ).height();
-	let hd = $( document ).height();
 
 	var consoley = { //helps show alert in Android
 		log: function(msg) { alert(msg); }
@@ -48,10 +42,8 @@ jQuery(document).ready(function($){
 	//oldie >> 'pointerenter pointerleave'
 	const eventType = 'ontouchstart' in window ? 'pointerover pointerout' : 'mouseover mouseout';
 
-	console.log("euuuh:Sizes", w, d, h, hd,wheelType,eventType);
-
-	//fires lots on landing page and not afterwards..huh---prolly needed ?!? toReview**
-	window.onscroll = function () { window.scrollTo(0, 0);}; // console.log("euuuh:scrollinnn?");
+	//fires lots on landing page and not afterwards..huh-
+	window.onscroll = function () { window.scrollTo(0, 0);};
 
 	$('#logo-container')
 		.transition({rotateY: '30deg', opacity: 0, scale: 0.8},0)
@@ -92,6 +84,16 @@ jQuery(document).ready(function($){
 
 	function isTouchPointer() { //huh if has coarse pointer...
 		return matchMedia("(pointer: coarse)").matches;
+	}
+
+	function checkSizes() {	
+		let w = $( window ).width();
+		//let iw = $( window ).innerWidth(); //huh works with jquery == w above BUT window.innerWidth == d below...huh?
+		let d = $( document ).width();//huh larger than window?!? >> 'document' could extend far beyond 'window'
+		let h = $( window ).height();
+		let hd = $( document ).height();
+
+		console.log("euuuh:Sizes", w, d, h, hd,wheelType,eventType);
 	}
 
 	function checkTouchAction() {
@@ -190,6 +192,7 @@ jQuery(document).ready(function($){
 		}
 	});
 
+	checkSizes();
 	checkTouchAction();
 
 	//Scroll up
@@ -339,23 +342,10 @@ jQuery(document).ready(function($){
 	// mouseover and mouseout event handler in Desktop OR touch event in mobile
 	//'pointerenter pointerleave' better than 'touchstart'
 	function handleImageEvent(selector, rotClass, lineSelector, lineClass, elementsToToggle = {}) {
-		$(selector).on(eventType, function (e) {  //'mouseover mouseout'
+		$(selector).on(eventType, function (e) { 
 			const shouldAddClass = !$('.photo').hasClass(rotClass);
 			const launchyLine = !$(lineSelector).hasClass(lineClass);
 			
-			//console.log("handleImageEvent....!!"+rotClass,e.type, e.clientY,e.pageY,lastKnownScrollPosition);
-			//bof nope for pointer-events
-			//if(e.type == 'pointerenter'){
-				//$("main").css("pointer-events", "none"); 
-				//$("main")[0].style.pointerEvents = "none";
-				//e.preventDefault();//bof doesnt work 
-			//} else{
-				//console.log("handleImageEvent:keepGoing",rotClass,e.type);
-				//$("main").css("pointer-events", "auto");
-				//$("main")[0].style.pointerEvents = "auto";
-			//}  
-			//$('main').css('pointer-events', 'none') : $('main').css('pointer-events', 'auto'); >> stops pointerDown triggers on main? >>bof nope...
-			//$('#about').css('pointer-events', 'none');
 			toggleBlockImage(shouldAddClass, rotClass, elementsToToggle);
 			launchLine(launchyLine, lineSelector, lineClass);
 		});

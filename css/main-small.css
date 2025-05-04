@@ -62,7 +62,6 @@ main.nav-is-visible{
     width: 100vw; /* was 90..gotta be wider or equal than photo-container */
     margin:auto;
     height:auto;
-    /*height:100vh; umm removal wont affect photos? nope better for scroll even but leaves huge empty space below?*/
     /* height:calc(1vh + 900px);  meh 
     */
 }
@@ -78,9 +77,9 @@ main.nav-is-visible{
 
 #photo-container{
 	margin: 11% auto 0 auto;
-	width: 100%;
+	width: 95%; /* was 100% but better left&right margin*/
     height:auto; 
-    /*height:max(600px, calc(75vh / 3))auto; auto seems to work but no margin :(...have to be set or uses main.css* 
+    /*height:max(600px, calc(75vh / 3))auto; auto seems to work ..have to be set or uses main.css* 
 	/*height: 75vh; 75% prolly cant use % as no height in parent? ... 600px;
     */
 }
@@ -92,8 +91,6 @@ main.nav-is-visible{
     position: relative;
     -webkit-perspective: 1000px;
     perspective: 1000px;
-    /*-webkit-perspective-origin: 50% 50%;
-    perspective-origin: 50% 50%; need even perspective? smdh DEF dont even need the below esti*/
     text-align: center;
     font-family: 'Passion One', cursive;
     font-size: 36px;
@@ -101,12 +98,12 @@ main.nav-is-visible{
     color: #1a1a1a;
 }
 
-.first-box, .second-box, .third-box{
+.first-box, .second-box, .third-box{/* */
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	-webkit-transform: translateZ( -5.625rem );
-	transform: translateZ(  -5.625rem );
+	-webkit-transform: translateZ( -45px );/* -5.625rem */
+	transform: translateZ( -45px  ); /* -5.625rem */
     /*transform: rotateY(90deg) translateX(100%) rotateY(-90deg);*/
 	-webkit-transform-style: preserve-3d;
 
@@ -120,8 +117,7 @@ main.nav-is-visible{
 
 
 .first-box figure, .second-box figure, .third-box figure{
-    /*width: 90vw;
-    height: 100%;  180px;  calc(100% / 3); max(180px, calc(75vh / 3))  */
+    /*height: 100%;  180px;  calc(100% / 3); max(180px, calc(75vh / 3))  */
     width: 100%;
     height: 100%;
     margin: 0px;
@@ -180,9 +176,7 @@ figure {  //other attempt using !important works but whole div moves smh
     background-size: cover; 
 }*/
 
-/* using url("../img/resized/photo01.jpg") but gotta change height = 270/3 
-using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh + photo03 just slightly decal
-*/
+
 .first-box .front, .second-box .bottom, .third-box .back{
     background-image: url("../img/resized/photo01.jpg"); 
 }
@@ -235,35 +229,35 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 }
 
 .front {
-	-webkit-transform-origin: center center; /* center center */
+	-webkit-transform-origin: center center;
     -ms-transform-origin: center center;
         transform-origin: center center;
-	-webkit-transform: rotateY(0deg) translateZ(5.625rem) ; 
-	        transform: rotateY(0deg) translateZ(5.625rem) ; 
+	-webkit-transform: rotateY(0deg) translateZ(45px) ; /*5.625rem  */
+	        transform: rotateY(0deg) translateZ(45px) ; /* 5.625rem */
 
 }
 
 .back {
-	-webkit-transform-origin: center center; /*center center */
+	-webkit-transform-origin: center center;
     -ms-transform-origin: center center;
         transform-origin: center center;
-	-webkit-transform: rotateX(180deg) translateZ(5.625rem);
-	        transform: rotateX(180deg) translateZ(5.625rem); 
+	-webkit-transform: rotateX(180deg) translateZ(45px); /*5.625rem */
+	        transform: rotateX(180deg) translateZ(45px); /*5.625rem */
 
 }
 
 .bottom {
-	-webkit-transform-origin: center center ; /*center center  */
+	-webkit-transform-origin: center center ; 
     -ms-transform-origin: center center;
         transform-origin: center center;
-	-webkit-transform: rotateX(-90deg) translateZ(5.625rem);
-	        transform: rotateX(-90deg) translateZ(5.625rem); 
+	-webkit-transform: rotateX(-90deg) translateZ(45px); /* 5.625rem */
+	        transform: rotateX(-90deg) translateZ(45px); /* 5.625rem */
 }
 
 
 .launchRot01 .second-box, .launchRot02 .third-box, .launchRot02 .first-box{
-	-webkit-transform:  rotateX(90deg) translateY( -5.625rem );
-        transform:  rotateX(90deg) translateY( -5.625rem );
+	-webkit-transform:  rotateX(90deg) translateY( -45px ); /*-5.625rem */
+        transform:  rotateX(90deg) translateY( -45px ); /*-5.625rem */
 	-webkit-transition: -webkit-transform 1s;
 	        transition: transform 1s;
 	-webkit-transform-origin: center center;
@@ -273,8 +267,8 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 }
 
 .launchRot01 .third-box, .launchRot03 .second-box, .launchRot03 .first-box{
-	-webkit-transform:  rotateX(179deg) translateZ( 5.625rem );
-        transform:  rotateX(179deg) translateZ( 5.625rem );
+	-webkit-transform:  rotateX(179deg) translateZ( 45px ); /* 5.625rem */
+        transform:  rotateX(179deg) translateZ( 45px ); /* 5.625rem */
 	-webkit-transition: -webkit-transform 1s;
 	        transition: transform 1s;
 	-webkit-transform-origin: center center;
@@ -289,34 +283,18 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	pointer-events: none;
 	margin: auto;
 	margin-top: -10%; /*calc(-100% - 100px); */
-	width: 100vw; /* better with vw */
+	width: inherit;
 	height: fit-content; /* 10%;  150px*/
 }
 
 .line-container{
-	margin-bottom: 0; /* 15px-- 1.5%;  0.937em*/
+	margin-bottom: 0.937em; /* 15px-- 1.5%;  0.937em*/
 }
-
-/*
-.lineL, .goLine .lineL{
-	-webkit-transform-origin: right top;
-    -ms-transform-origin: right top;
-        transform-origin: right top;  
-}
-
-.lineR, .goLine .lineR{
-	right: 0;
-	-webkit-transform-origin: left top;
-    -ms-transform-origin: left top;
-        transform-origin: left top;	
-}*/
 
 .lineL, .lineR{
 	position: absolute;
-	/*height: 1px;
-	width:200px;*/
     height: 0.0625em;  /* ahh scale below changes width!! toReview */
-    width: 12.5em; /*calc(0vw + 200px); try calc with % */
+    width: calc(100% / 2); /*12.5em >>was wrong ..toTry? max(180px, calc(75vh / 3));  */
 	background-color: #fff;
 	opacity: 0;
 	-webkit-transition: height 0.25s, width 0.5s 0.25s, opacity 0.25s 0.25s,-webkit-transform 0.5s 0.25s;
@@ -332,10 +310,8 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
         transform:scale(0.15,1);
 	opacity: 1;
 
-	/*width: 550px;
-	height:10px;*/ 
     height:0.625rem;
-    width: 31.25em; /*calc(0vw + 500px); */
+    width: calc(100% / 2 ); /*31.25em >> was wrong */
 	-webkit-transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, -webkit-transform 0.5s 0.25s;
 	        transition: height 0.25s 0.75s,  width 0.5s, opacity 0.5s, transform 0.5s 0.25s;
 }
