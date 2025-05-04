@@ -305,7 +305,7 @@ main.nav-is-visible{
 
 #services{
     height: 70vh; /*toReview if not too much space and use margin-bottom? */
-    width: 100vw;
+    width: 100%;
     margin: auto;
     margin-top: 3.625em;
 }
@@ -364,7 +364,12 @@ main.nav-is-visible{
 	margin-left: 0;
 }
 
+#name,#email,#object{
+	width: 100%;
+}
+
 #message{
+    width: 100%; /*90vw 860px; */
 	height: 12.5em;/*200px; */
 }
 
@@ -379,5 +384,4 @@ main.nav-is-visible{
 #map {
 	margin-top: 5rem;/*80px; */
 	height:24em; /*need height map not shown with auto 400px; */
-	width:100vw;
 }

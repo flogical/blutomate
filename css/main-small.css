@@ -373,7 +373,7 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 
 #services{ 
     height: 70vh;  /*toReview if not too much space and use margin-bottom? */
-    width: 100vw;
+    width: 100%;
     margin: auto;
     margin-top: 3.625em;
 }
@@ -399,18 +399,6 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 	height: auto;	/* 100px;*/
 	float: left;
 }
-
-/*#second{
-	width: 18.75rem; 
-	height: auto;
-	float: left;
-}
-
-#third{
-	width: 18.75rem; 
-	height: auto;
-	float: left;
-}*/
 
 /* gotta override below and put in two cols*/
 .title-service{
@@ -459,5 +447,4 @@ using cropped url("../img/cropped/photo01.jpg") still cant fit whole image smh +
 #map {
 	margin-top: 5em;/*80px; */
 	height:24em; /* mao not shown with auto 400px; */
-	width:100vw;
 }
