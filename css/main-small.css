@@ -376,7 +376,7 @@ figure {  //other attempt using !important works but whole div moves smh
 	float: left;
 }
 
-/* gotta override below and put in two cols*/
+/* gotta override below and put in two cols
 .title-service{
 	text-align: center;
 	line-height: 1.6em;
@@ -384,7 +384,7 @@ figure {  //other attempt using !important works but whole div moves smh
 	font-style: italic;	
 	font-size: 16px;
 	color: #1a1a1a;
-}
+}*/
 
 #contact{
 	width: 80%; /*90vw */

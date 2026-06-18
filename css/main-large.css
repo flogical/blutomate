@@ -8,8 +8,25 @@
 **********************************************************************
 *********************************************************************/
 
+p, .title-service{
+	font-size: 2.4rem;
+}
+
 .photo .doHide {
-    display: none; /* still needed to hide those perspective imgs */
+    display: none; /* still needed to hide those perspective imgs width: -webkit-fit-content;
+    width: -moz-fit-content;max-width: fit-content;*/
+}
+
+#photo-container {
+	margin: 5% auto 0 auto;
+	height: 600px;
+}
+
+.photo{
+    margin:auto; /*bon gotta center it and use clamp below*/
+ 	width: clamp(50%, 50%, 80vw);
+	height: 180px;
+    margin-bottom: 5px;
 }
 
 .first-box figure{	
@@ -26,3 +43,32 @@
 	background-position: center -360px;
     background-repeat: no-repeat;
 }
+
+.info-service{/* override font-size and font-style above smh */
+	font-size: 2.4rem;
+}
+
+#contact {
+    position:relative; /* just to move it down smh */
+    top:10em;
+    padding:2rem;
+}
+
+#contact ::after {
+    content: '';
+    display: table; /*to push rest of elts down*/
+}
+
+#map-container{
+	top:14em;
+}
+
+#name,#email,#object,#message  {
+    font-size: larger;
+}
+
+#object {
+	margin-left: 50px;
+}
+
+
