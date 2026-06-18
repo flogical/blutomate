@@ -280,14 +280,6 @@ main.nav-is-visible{
 	        transform-origin: center center;
 }
 
-.first-box figure, .second-box figure, .third-box figure{
- 	width: 100%; /*1000px */
-	height: 180px;
- 	margin: 0px;
-	display: block;
-	position: absolute;
-}
-
 .first-box .front, .second-box .bottom, .third-box .back{
 	background-image: url("../img/photo01.jpg");
 	/*background-repeat: no-repeat; */
@@ -301,6 +293,15 @@ main.nav-is-visible{
 .first-box .back, .second-box .back, .third-box .front{
 	background-image: url("../img/photo03.jpg");
 	/*background-repeat: no-repeat; >> redundant */
+}
+
+
+.first-box figure, .second-box figure, .third-box figure{
+ 	width: 100%; /*1000px */
+	height: 180px;
+ 	margin: 0px;
+	display: block;
+	position: absolute;
 }
 
 .first-box figure{	
@@ -500,7 +501,7 @@ main.nav-is-visible{
 }
 
 /*test for 2 columns not bad but would need remove above #first, #second, #third 
-and ugly space too...meh toVisit if have more services
+and ugly space too...meh toVisit if have more services see fourth below(would then add #fourth above and decrease  width to 25%
 .service {  
 	//nah column-width: 18.75rem; 
 	column-count: 2;
@@ -519,6 +520,10 @@ and ugly space too...meh toVisit if have more services
 #third span{
 	background: url("../assets/pm.svg") no-repeat center;
 }
+
+/*#fourth span{
+	background: url("../assets/svgviewer-output.svg") no-repeat center;
+}*/
 
 a{
 	text-decoration: none;
@@ -570,7 +575,7 @@ input:focus, textarea:focus{
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 1000px) {
+@media screen and (min-width: 768px) and (max-width: 1226px) {
 	#email {
 		margin-left: 0; 
 	}
